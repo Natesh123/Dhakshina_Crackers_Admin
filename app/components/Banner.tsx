@@ -77,7 +77,13 @@ export default function Banner({ priceListUrl = "" }: BannerProps) {
                             >
                                 View Price List
                             </button>
-                            <button className="w-full sm:w-auto px-8 py-3.5 rounded-full border-2 border-white text-white font-black text-sm sm:text-base uppercase tracking-wider hover:bg-white hover:text-festive-purple transition-all">
+                            <button 
+                                onClick={() => {
+                                    const el = document.getElementById('contact');
+                                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                                }}
+                                className="w-full sm:w-auto px-8 py-3.5 rounded-full border-2 border-white text-white font-black text-sm sm:text-base uppercase tracking-wider hover:bg-white hover:text-festive-purple transition-all cursor-pointer"
+                            >
                                 Contact Us
                             </button>
                         </div>

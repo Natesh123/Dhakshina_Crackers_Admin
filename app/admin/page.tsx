@@ -34,7 +34,13 @@ export default function AdminDashboard() {
   const [products, setProducts] = useState<Product[]>([]);
   const [orders, setOrders] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState<"overview" | "products" | "categories" | "orders" | "customers" | "reports" | "billing">("overview");
+  const [activeTab, setActiveTab] = useState<"overview" | "products" | "categories" | "orders" | "customers" | "reports" | "billing" | "contacts">("overview");
+  const [contacts, setContacts] = useState<any[]>([]);
+  const [unreadContacts, setUnreadContacts] = useState<any[]>([]);
+  const [contactsSearch, setContactsSearch] = useState("");
+  const [contactsPage, setContactsPage] = useState(1);
+  const [contactToDelete, setContactToDelete] = useState<number | null>(null);
+  const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
   const [reportType, setReportType] = useState<"date" | "month" | "year">("date");
   const [reportFromDate, setReportFromDate] = useState("");
   const [reportToDate, setReportToDate] = useState("");
@@ -82,7 +88,14 @@ export default function AdminDashboard() {
     }
   }, []);
 
-  // Initialize socket and alarm
+  // Initialize root font size scale and socket
+  useEffect(() => {
+    document.documentElement.style.fontSize = "17.2px";
+    return () => {
+      document.documentElement.style.fontSize = "";
+    };
+  }, []);
+
   useEffect(() => {
     const socket = io(apiUrl || "http://localhost:5000");
     
@@ -412,12 +425,13 @@ export default function AdminDashboard() {
   const fetchData = async () => {
     try {
       setLoading(true);
-      const [catsRes, prodsRes, diagRes, plRes, ordersRes] = await Promise.all([
+      const [catsRes, prodsRes, diagRes, plRes, ordersRes, contactsRes] = await Promise.all([
         fetch(`${apiUrl}/api/categories`),
         fetch(`${apiUrl}/api/products`),
         fetch(`${apiUrl}/api/diagnostics`).catch(() => null),
         fetch(`${apiUrl}/api/settings/price-list`).catch(() => null),
         fetch(`${apiUrl}/api/orders`).catch(() => null),
+        fetch(`${apiUrl}/api/contacts`).catch(() => null),
       ]);
 
       if (!catsRes.ok || !prodsRes.ok) throw new Error("Failed to fetch data");
@@ -442,6 +456,12 @@ export default function AdminDashboard() {
         const ordersData = await ordersRes.json();
         setOrders(ordersData);
         setUnreadOrders(ordersData.filter((o: any) => o.is_read === 0 && o.source === 'Website'));
+      }
+
+      if (contactsRes && contactsRes.ok) {
+        const contactsData = await contactsRes.json();
+        setContacts(contactsData);
+        setUnreadContacts(contactsData.filter((c: any) => c.is_read === 0));
       }
     } catch (err: any) {
       showToast(err.message || "Error loading dashboard", "error");
@@ -505,6 +525,48 @@ export default function AdminDashboard() {
       showToast(err.message || "Failed to delete customer", "error");
     } finally {
       setCustomerToDelete(null);
+    }
+  };
+
+  const handleDeleteContact = (contactId: number) => {
+    setContactToDelete(contactId);
+  };
+
+  const confirmDeleteContact = async () => {
+    if (contactToDelete === null) return;
+    try {
+      const res = await fetch(`${apiUrl}/api/contacts/${contactToDelete}`, { method: "DELETE" });
+      if (!res.ok) throw new Error("Failed to delete contact message");
+      setContacts(prev => prev.filter(c => c.id !== contactToDelete));
+      setUnreadContacts(prev => prev.filter(c => c.id !== contactToDelete));
+      showToast("Message deleted successfully", "success");
+    } catch (err: any) {
+      showToast(err.message, "error");
+    } finally {
+      setContactToDelete(null);
+    }
+  };
+
+  const handleMarkContactRead = async (contactId: number) => {
+    try {
+      const res = await fetch(`${apiUrl}/api/contacts/${contactId}/mark-read`, { method: "PUT" });
+      if (!res.ok) throw new Error("Failed to mark read");
+      setContacts(prev => prev.map(c => c.id === contactId ? { ...c, is_read: 1 } : c));
+      setUnreadContacts(prev => prev.filter(c => c.id !== contactId));
+    } catch (err: any) {
+      showToast(err.message, "error");
+    }
+  };
+
+  const handleMarkAllContactsRead = async () => {
+    try {
+      const res = await fetch(`${apiUrl}/api/contacts/mark-read`, { method: "PUT" });
+      if (!res.ok) throw new Error("Failed to mark all read");
+      setContacts(prev => prev.map(c => ({ ...c, is_read: 1 })));
+      setUnreadContacts([]);
+      showToast("All messages marked as read", "success");
+    } catch (err: any) {
+      showToast(err.message, "error");
     }
   };
 
@@ -1393,19 +1455,21 @@ export default function AdminDashboard() {
   return (
     <>
       {isLoggingIn && <LoginTransition />}
-      <div className="flex h-screen bg-[#f8fafc] text-slate-900 font-['Outfit'] antialiased overflow-hidden">
-        {/* Left Sidebar (Full Height, Fixed) */}
-        <aside className="w-64 bg-[#0a0514] text-white flex flex-col h-full shrink-0 border-r border-white/5 relative overflow-hidden z-20 print:hidden">
+      <div className="flex h-screen bg-[#f8fafc] text-slate-900 font-['Outfit'] antialiased overflow-hidden relative">
+        {/* Left Sidebar (Full Height, Responsive Drawer) */}
+        <aside className={`fixed inset-y-0 left-0 w-64 bg-[#0a0514] text-white flex flex-col h-full shrink-0 border-r border-white/5 overflow-hidden z-40 print:hidden transform transition-transform duration-300 lg:relative lg:translate-x-0 lg:z-20 ${
+          isMobileSidebarOpen ? "translate-x-0" : "-translate-x-full"
+        }`}>
           <div className="p-5 flex items-center gap-3 border-b border-white/5 mb-4 bg-gradient-to-r from-white/[0.02] to-transparent">
             <div className="relative w-11 h-11 rounded-lg bg-white p-0.5 overflow-hidden shrink-0 border border-amber-400/40 shadow-[0_0_15px_rgba(245,158,11,0.15)]">
               <img src="/assets/images/sri_dhakshina_logo.jpg" alt="Logo" className="w-full h-full object-contain rounded-md" />
             </div>
             <div className="flex flex-col">
-              <h1 className="text-sm font-black text-white tracking-tight uppercase leading-tight">
+              <h1 className="text-base font-black text-white tracking-tight uppercase leading-tight">
                 Sri Dhakshina
-                <span className="block text-amber-400 text-xs mt-0.5">Crackers</span>
+                <span className="block text-amber-400 text-sm mt-0.5">Crackers</span>
               </h1>
-              <p className="text-[9px] font-black text-indigo-400 tracking-widest uppercase mt-0.5">Admin Portal</p>
+              <p className="text-[10.5px] font-black text-indigo-400 tracking-widest uppercase mt-0.5">Admin Portal</p>
             </div>
           </div>
           <div className="px-6 py-2 text-sm font-bold tracking-widest uppercase text-slate-500 mb-2 mt-2">
@@ -1418,26 +1482,27 @@ export default function AdminDashboard() {
               { id: "products", label: "Products", icon: "🛍️" },
               { id: "orders", label: "Orders", icon: "🛒" },
               { id: "customers", label: "Customers", icon: "👥" },
+              { id: "contacts", label: "Contact Us", icon: "✉️" },
               { id: "reports", label: "Sales Reports", icon: "📈" },
               { id: "billing", label: "POS Billing", icon: "🧾" },
             ].map((tab) => (
               <button
                 key={tab.id}
-                onClick={() => setActiveTab(tab.id as any)}
-                className={`w-full flex items-center gap-4 px-4 py-3.5 rounded-xl text-[15px] font-bold transition-all duration-200 ${
+                onClick={() => { setActiveTab(tab.id as any); setIsMobileSidebarOpen(false); }}
+                className={`w-full flex items-center gap-4 px-4 py-3.5 rounded-xl text-[17px] font-bold transition-all duration-200 ${
                   activeTab === tab.id ? "bg-slate-800 text-white shadow-md shadow-slate-900/50" 
                     : "text-slate-400 hover:text-white hover:bg-slate-800/50"
                 }`}
               >
-                <span className="text-lg opacity-80">{tab.icon}</span>
+                <span className="text-xl opacity-80">{tab.icon}</span>
                 <span>{tab.label}</span>
               </button>
             ))}
           </nav>
           <div className="p-4 mt-auto border-t border-slate-800 pb-8">
             <button
-              onClick={handleLogout}
-              className="w-full flex items-center gap-4 px-4 py-3.5 rounded-xl text-[15px] font-bold transition-all duration-200 text-red-400 hover:text-red-300 hover:bg-red-500/10 group"
+              onClick={() => { handleLogout(); setIsMobileSidebarOpen(false); }}
+              className="w-full flex items-center gap-4 px-4 py-3.5 rounded-xl text-[17px] font-bold transition-all duration-200 text-red-400 hover:text-red-300 hover:bg-red-500/10 group"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 opacity-80 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M5.636 5.636a9 9 0 1012.728 0M12 3v9" />
@@ -1447,8 +1512,32 @@ export default function AdminDashboard() {
           </div>
         </aside>
 
+        {/* Mobile Sidebar Backdrop Overlay */}
+        {isMobileSidebarOpen && (
+          <div 
+            className="fixed inset-0 z-30 bg-black/60 backdrop-blur-sm lg:hidden animate-fadeIn" 
+            onClick={() => setIsMobileSidebarOpen(false)}
+          ></div>
+        )}
+
         {/* Main Content Area */}
         <div className="flex-1 flex flex-col h-full overflow-hidden relative bg-slate-900">
+          {/* Mobile Header Banner */}
+          <div className="lg:hidden flex items-center justify-between px-6 py-4 bg-[#0a0514] border-b border-white/5 shrink-0 relative z-30">
+            <button onClick={() => setIsMobileSidebarOpen(true)} className="p-2 -ml-2 text-white hover:text-indigo-400 focus:outline-none transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+              </svg>
+            </button>
+            <div className="flex items-center gap-2">
+              <div className="w-7 h-7 rounded-md bg-white p-0.5 overflow-hidden border border-amber-400/40">
+                <img src="/assets/images/sri_dhakshina_logo.jpg" alt="Logo" className="w-full h-full object-contain rounded-sm" />
+              </div>
+              <span className="font-black text-white text-xs uppercase tracking-wider">Sri Dhakshina</span>
+            </div>
+            <div className="w-8 h-8"></div> {/* spacer */}
+          </div>
+
           {/* Audio Element for Notifications */}
           <audio ref={audioRef} preload="auto" src="https://actions.google.com/sounds/v1/alarms/beep_short.ogg" />
 
@@ -1747,7 +1836,7 @@ export default function AdminDashboard() {
                             <input 
                               type="file" 
                               accept="application/pdf"
-                              onChange={handleUploadPriceList}
+                              onChange={handlePdfUpload}
                               className="absolute inset-0 w-full h-full opacity-0 cursor-pointer disabled:cursor-not-allowed"
                               disabled={uploadingPdf}
                             />
@@ -1776,7 +1865,7 @@ export default function AdminDashboard() {
                   <div className="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 rounded-3xl p-8 lg:p-10 text-white relative overflow-hidden shadow-2xl shadow-indigo-900/20 border border-indigo-500/20 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                     <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
                     <div className="relative z-10">
-                      <h2 className="text-3xl font-black text-white tracking-tight">Category Structure</h2>
+                      <h2 className="text-3xl font-black text-white tracking-tight">Category List</h2>
                       <p className="text-indigo-200 text-base mt-2 font-medium">Organize and manage your product groupings</p>
                     </div>
                     <button
@@ -1845,7 +1934,7 @@ export default function AdminDashboard() {
                   <div className="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 rounded-3xl p-8 lg:p-10 text-white relative overflow-hidden shadow-2xl shadow-indigo-900/20 border border-indigo-500/20 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6">
                     <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
                     <div className="relative z-10">
-                      <h2 className="text-3xl font-black text-white tracking-tight">Master Catalog</h2>
+                      <h2 className="text-3xl font-black text-white tracking-tight">Products List</h2>
                       <p className="text-indigo-200 text-base mt-2 font-medium">Browse and manage {products.length} products</p>
                     </div>
                     <div className="flex flex-wrap items-center gap-3 w-full lg:w-auto relative z-10">
@@ -2546,8 +2635,135 @@ export default function AdminDashboard() {
                   </div>
               )}
 
+              {/* TAB: CONTACTS */}
+              {activeTab === "contacts" && (
+                <div className="space-y-6 animate-slideDown">
+                  <div className="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 rounded-3xl p-8 lg:p-10 text-white relative overflow-hidden shadow-2xl shadow-indigo-900/20 border border-indigo-500/20 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
+                    <div className="relative z-10">
+                      <h2 className="text-3xl font-black text-white tracking-tight">Contact Messages</h2>
+                      <p className="text-indigo-200 text-base mt-2 font-medium">Manage inquiries submitted from the website contact form</p>
+                    </div>
+                  </div>
+
+                  <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm p-6 space-y-4">
+                    <div className="flex flex-col sm:flex-row gap-4 justify-between items-center">
+                      <input 
+                        type="text" 
+                        placeholder="Search by name, phone or message..." 
+                        value={contactsSearch} 
+                        onChange={e => {
+                          setContactsSearch(e.target.value);
+                          setContactsPage(1);
+                        }} 
+                        className="bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-slate-900 w-full sm:max-w-md" 
+                      />
+                      <div className="text-sm font-bold text-slate-500 bg-slate-100 px-3 py-1.5 rounded-lg border border-slate-200 shrink-0">
+                        Total: {contacts.length} Messages
+                      </div>
+                    </div>
+
+                    {(() => {
+                      const filtered = contacts.filter(c => 
+                        c.name.toLowerCase().includes(contactsSearch.toLowerCase()) ||
+                        c.phone.toLowerCase().includes(contactsSearch.toLowerCase()) ||
+                        c.message.toLowerCase().includes(contactsSearch.toLowerCase())
+                      );
+
+                      if (filtered.length === 0) {
+                        return (
+                          <div className="p-16 text-center">
+                            <div className="text-6xl mb-4 opacity-50">✉️</div>
+                            <h3 className="text-lg font-bold text-slate-900">No Messages Found</h3>
+                            <p className="text-slate-500 text-base mt-2">No contact messages match your search filter or are available.</p>
+                          </div>
+                        );
+                      }
+
+                      const itemsPerPage = 10;
+                      const totalPages = Math.ceil(filtered.length / itemsPerPage) || 1;
+                      const paginated = filtered.slice((contactsPage - 1) * itemsPerPage, contactsPage * itemsPerPage);
+
+                      return (
+                        <>
+                          <div className="overflow-x-auto -mx-6">
+                            <table className="w-full text-center border-collapse">
+                              <thead>
+                                <tr className="bg-slate-50 border-b border-slate-200">
+                                  <th className="px-6 py-4 text-xs font-black text-slate-500 uppercase tracking-widest w-16 text-center">S.No</th>
+                                  <th className="px-6 py-4 text-xs font-black text-slate-500 uppercase tracking-widest w-1/5 text-center">Name</th>
+                                  <th className="px-6 py-4 text-xs font-black text-slate-500 uppercase tracking-widest w-1/5 text-center">Phone Number</th>
+                                  <th className="px-6 py-4 text-xs font-black text-slate-500 uppercase tracking-widest w-2/5 text-center">Message</th>
+                                  <th className="px-6 py-4 text-xs font-black text-slate-500 uppercase tracking-widest text-center">Date</th>
+                                  <th className="px-6 py-4 text-xs font-black text-slate-500 uppercase tracking-widest text-center">Actions</th>
+                                </tr>
+                              </thead>
+                              <tbody className="divide-y divide-slate-100">
+                                {paginated.map((contact, index) => (
+                                  <tr key={contact.id || index} className={`hover:bg-slate-50/50 transition-colors group ${contact.is_read ? 'opacity-80' : 'font-semibold bg-indigo-50/10'}`}>
+                                    <td className="px-6 py-5 text-center text-sm font-bold text-slate-400">
+                                      {(contactsPage - 1) * itemsPerPage + index + 1}
+                                    </td>
+                                    <td className="px-6 py-5 text-center">
+                                      <div className="flex items-center justify-center gap-3">
+                                        <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg border shrink-0 ${
+                                          contact.is_read ? 'bg-slate-100 border-slate-200 text-slate-500' : 'bg-indigo-50 border-indigo-100 text-indigo-600'
+                                        }`}>
+                                          {contact.name.charAt(0).toUpperCase()}
+                                        </div>
+                                        <div className="font-bold text-slate-900 text-base">{contact.name}</div>
+                                      </div>
+                                    </td>
+                                    <td className="px-6 py-5 text-center">
+                                      <a href={`tel:${contact.phone}`} className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-100 text-slate-700 font-bold text-sm hover:bg-indigo-50 hover:text-indigo-600 transition-all border border-slate-200/60 shadow-sm">
+                                        <span>📞</span> {contact.phone}
+                                      </a>
+                                    </td>
+                                    <td className="px-6 py-5 text-center">
+                                      <p className="text-slate-700 text-sm whitespace-pre-wrap leading-relaxed break-words text-center">{contact.message}</p>
+                                    </td>
+                                    <td className="px-6 py-5 text-center whitespace-nowrap">
+                                      <div className="text-sm font-semibold text-slate-800 text-center">
+                                        {new Date(contact.created_at).toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' })} - {new Date(contact.created_at).toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit', hour12: true })}
+                                      </div>
+                                    </td>
+                                    <td className="px-6 py-5 text-center whitespace-nowrap">
+                                      <div className="flex items-center justify-center gap-2">
+                                        <button onClick={() => handleDeleteContact(contact.id)} className="w-9 h-9 bg-white text-red-500 border border-slate-200 rounded-lg inline-flex items-center justify-center hover:bg-red-50 hover:border-red-200 shadow-sm transition-all group cursor-pointer" title="Delete Message">
+                                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4 group-hover:scale-110 transition-transform">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                                          </svg>
+                                        </button>
+                                      </div>
+                                    </td>
+                                  </tr>
+                                ))}
+                              </tbody>
+                            </table>
+                          </div>
+
+                          {filtered.length > itemsPerPage && (
+                            <div className="flex justify-center mt-6">
+                              <div className="flex items-center gap-2 bg-white p-2 rounded-2xl shadow-sm border border-slate-100">
+                                <button disabled={contactsPage === 1} onClick={() => setContactsPage(p => p - 1)} className="p-2 rounded-xl hover:bg-slate-50 disabled:opacity-50 transition-colors">
+                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>
+                                </button>
+                                <span className="text-sm font-bold text-slate-800 px-4">Page {contactsPage} of {totalPages}</span>
+                                <button disabled={contactsPage === totalPages} onClick={() => setContactsPage(p => p + 1)} className="p-2 rounded-xl hover:bg-slate-50 disabled:opacity-50 transition-colors">
+                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5"><path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+                                </button>
+                              </div>
+                            </div>
+                          )}
+                        </>
+                      );
+                    })()}
+                  </div>
+                </div>
+              )}
+
               {/* FALLBACK FOR NEW DYNAMIC MODULES */}
-              {!["overview", "categories", "products", "orders", "customers", "reports", "billing"].includes(activeTab) && (
+              {!["overview", "categories", "products", "orders", "customers", "reports", "billing", "contacts"].includes(activeTab) && (
                 <div className="flex flex-col items-center justify-center h-[60vh] bg-[#180a27]/40 backdrop-blur-sm border border-slate-200 rounded-3xl p-10 text-center animate-slideDown shadow-xl shadow-black/20">
                   <div className="text-6xl mb-6 opacity-80">
                     {activeTab === "inventory" ? "📦" : activeTab === "customers" ? "👥" : activeTab === "offers" ? "🎁" : activeTab === "reports" ? "📈" : activeTab === "settings" ? "⚙️" : "✨"}
@@ -3289,6 +3505,43 @@ export default function AdminDashboard() {
                 <button
                   onClick={confirmDeleteCustomer}
                   className="flex-1 py-3 rounded-xl bg-red-500 hover:bg-red-600 text-slate-900 font-bold text-sm  tracking-tight shadow-lg shadow-red-500/20 transition-all"
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* CONTACT DELETE CONFIRMATION MODAL */}
+      {contactToDelete !== null && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
+          <div className="absolute inset-0 bg-[#0a0514]/90 backdrop-blur-xl animate-fadeIn" onClick={() => setContactToDelete(null)}></div>
+          <div className="relative w-full max-w-sm bg-white rounded-3xl border border-slate-200 shadow-2xl shadow-red-500/20 overflow-hidden animate-slideUp">
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[200%] h-32 bg-red-500/20 blur-[60px] pointer-events-none"></div>
+            
+            <div className="p-8 text-center relative z-10">
+              <div className="w-16 h-16 rounded-2xl bg-red-500/20 flex items-center justify-center mx-auto mb-6 border border-red-500/50 shadow-[0_0_20px_rgba(239,68,68,0.3)]">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-8 h-8 text-red-500">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-black text-slate-900  tracking-tight mb-2">Delete Message?</h3>
+              <p className="text-slate-500 text-base mb-8 leading-relaxed">
+                Are you sure you want to permanently delete this contact query? This action cannot be undone.
+              </p>
+              
+              <div className="flex gap-3">
+                <button
+                  onClick={() => setContactToDelete(null)}
+                  className="flex-1 py-3 rounded-xl border border-slate-200 text-slate-900 font-bold text-sm  tracking-tight hover:bg-white transition-all cursor-pointer"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={confirmDeleteContact}
+                  className="flex-1 py-3 rounded-xl bg-red-500 hover:bg-red-600 text-slate-900 font-bold text-sm  tracking-tight shadow-lg shadow-red-500/20 transition-all cursor-pointer"
                 >
                   Delete
                 </button>

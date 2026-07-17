@@ -14,6 +14,7 @@ export default function FireworksCanvas() {
     let animationFrameId: number;
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = window.innerHeight);
+    const isMobile = width < 768;
 
     const handleResize = () => {
       if (!canvas) return;
@@ -38,11 +39,11 @@ export default function FireworksCanvas() {
         this.x = x;
         this.y = y;
         const angle = Math.random() * Math.PI * 2;
-        const speed = Math.random() * 5 + 1.5;
+        const speed = Math.random() * (isMobile ? 3.5 : 5) + 1.5;
         this.vx = Math.cos(angle) * speed;
         this.vy = Math.sin(angle) * speed;
         this.alpha = 1;
-        this.decay = Math.random() * 0.012 + 0.012;
+        this.decay = Math.random() * (isMobile ? 0.018 : 0.012) + (isMobile ? 0.018 : 0.012);
         this.color = color;
         this.gravity = 0.05;
         this.friction = 0.98;
@@ -61,10 +62,12 @@ export default function FireworksCanvas() {
         c.save();
         c.globalAlpha = this.alpha;
         c.beginPath();
-        c.arc(this.x, this.y, 2, 0, Math.PI * 2);
+        c.arc(this.x, this.y, isMobile ? 1.5 : 2, 0, Math.PI * 2);
         c.fillStyle = this.color;
-        c.shadowBlur = 6;
-        c.shadowColor = this.color;
+        if (!isMobile) {
+          c.shadowBlur = 6;
+          c.shadowColor = this.color;
+        }
         c.fill();
         c.restore();
       }
@@ -109,10 +112,12 @@ export default function FireworksCanvas() {
       draw(c: CanvasRenderingContext2D) {
         c.save();
         c.beginPath();
-        c.arc(this.x, this.y, 2.5, 0, Math.PI * 2);
+        c.arc(this.x, this.y, isMobile ? 2 : 2.5, 0, Math.PI * 2);
         c.fillStyle = this.color;
-        c.shadowBlur = 8;
-        c.shadowColor = this.color;
+        if (!isMobile) {
+          c.shadowBlur = 8;
+          c.shadowColor = this.color;
+        }
         c.fill();
         c.restore();
       }
@@ -137,7 +142,7 @@ export default function FireworksCanvas() {
       ctx.fillRect(0, 0, width, height);
 
       // Random launch spawn logic
-      if (Math.random() < 0.03 && rockets.length < 4) {
+      if (Math.random() < (isMobile ? 0.025 : 0.03) && rockets.length < (isMobile ? 2 : 4)) {
         spawnFirework();
       }
 
@@ -147,7 +152,9 @@ export default function FireworksCanvas() {
         r.draw(ctx);
         if (r.exploded) {
           // Create bursts of sparks
-          const numParticles = Math.floor(Math.random() * 40) + 40;
+          const numParticles = isMobile
+            ? Math.floor(Math.random() * 15) + 15
+            : Math.floor(Math.random() * 40) + 40;
           for (let i = 0; i < numParticles; i++) {
             particles.push(new Particle(r.x, r.y, r.color));
           }

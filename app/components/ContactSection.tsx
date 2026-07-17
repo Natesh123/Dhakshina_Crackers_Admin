@@ -1,8 +1,59 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 export default function ContactSection() {
+    const [name, setName] = useState('');
+    const [phone, setPhone] = useState('');
+    const [message, setMessage] = useState('');
+    const [submitting, setSubmitting] = useState(false);
+    const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' } | null>(null);
+
+    useEffect(() => {
+        if (toast) {
+            const timer = setTimeout(() => setToast(null), 5000);
+            return () => clearTimeout(timer);
+        }
+    }, [toast]);
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        if (!name.trim() || !phone.trim() || !message.trim()) {
+            setToast({ message: 'All fields are required', type: 'error' });
+            return;
+        }
+
+        const digitsOnly = phone.replace(/\D/g, '');
+        if (digitsOnly.length < 10) {
+            setToast({ message: 'Please enter a valid 10-digit phone number', type: 'error' });
+            return;
+        }
+
+        setSubmitting(true);
+        setToast(null);
+
+        try {
+            const apiUrl = process.env.NEXT_PUBLIC_API_URL || '';
+            const res = await fetch(`${apiUrl}/api/contacts`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name, phone, message }),
+            });
+
+            const data = await res.json();
+            if (!res.ok) throw new Error(data.error || 'Failed to send message');
+
+            setToast({ message: 'Message sent successfully! We will contact you soon.', type: 'success' });
+            setName('');
+            setPhone('');
+            setMessage('');
+        } catch (err: any) {
+            setToast({ message: err.message || 'Failed to send message. Please try again.', type: 'error' });
+        } finally {
+            setSubmitting(false);
+        }
+    };
+
     return (
         <section id="contact" className="bg-[#f8f9fa] bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] bg-[size:24px_24px] py-24 relative overflow-hidden">
             {/* Background dynamic ambient orbs */}
@@ -107,23 +158,36 @@ export default function ContactSection() {
                             <h3 className="text-2xl font-black text-gray-900">Send a Message</h3>
                         </div>
                         
-                        <form className="space-y-5 flex-grow flex flex-col justify-between">
+                        <form onSubmit={handleSubmit} className="space-y-5 flex-grow flex flex-col justify-between">
                             <div className="space-y-5">
                                 <div className="group/input">
                                     <label className="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2 ml-1 group-focus-within/input:text-festive-purple transition-colors">Full Name</label>
-                                    <input type="text" className="w-full bg-white/50 border border-gray-200 text-gray-900 rounded-[1rem] px-5 py-4 focus:outline-none focus:ring-2 focus:ring-festive-purple/20 focus:border-festive-purple transition-all focus:bg-white shadow-sm" placeholder="John Doe" />
+                                    <input type="text" value={name} onChange={e => setName(e.target.value)} required className="w-full bg-white/50 border border-gray-200 text-gray-900 rounded-[1rem] px-5 py-4 focus:outline-none focus:ring-2 focus:ring-festive-purple/20 focus:border-festive-purple transition-all focus:bg-white shadow-sm" placeholder="John Doe" />
                                 </div>
                                 <div className="group/input">
                                     <label className="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2 ml-1 group-focus-within/input:text-festive-purple transition-colors">Phone Number</label>
-                                    <input type="tel" className="w-full bg-white/50 border border-gray-200 text-gray-900 rounded-[1rem] px-5 py-4 focus:outline-none focus:ring-2 focus:ring-festive-purple/20 focus:border-festive-purple transition-all focus:bg-white shadow-sm" placeholder="+91 00000 00000" />
+                                    <input type="tel" value={phone} onChange={e => setPhone(e.target.value)} required className="w-full bg-white/50 border border-gray-200 text-gray-900 rounded-[1rem] px-5 py-4 focus:outline-none focus:ring-2 focus:ring-festive-purple/20 focus:border-festive-purple transition-all focus:bg-white shadow-sm" placeholder="+91 00000 00000" />
                                 </div>
                                 <div className="group/input">
                                     <label className="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2 ml-1 group-focus-within/input:text-festive-purple transition-colors">Message</label>
-                                    <textarea rows={4} className="w-full bg-white/50 border border-gray-200 text-gray-900 rounded-[1.5rem] px-5 py-4 focus:outline-none focus:ring-2 focus:ring-festive-purple/20 focus:border-festive-purple transition-all focus:bg-white shadow-sm resize-none" placeholder="How can we help you?"></textarea>
+                                    <textarea rows={4} value={message} onChange={e => setMessage(e.target.value)} required className="w-full bg-white/50 border border-gray-200 text-gray-900 rounded-[1.5rem] px-5 py-4 focus:outline-none focus:ring-2 focus:ring-festive-purple/20 focus:border-festive-purple transition-all focus:bg-white shadow-sm resize-none" placeholder="How can we help you?"></textarea>
                                 </div>
                             </div>
-                            <button className="w-full py-5 rounded-[1rem] bg-festive-purple text-white font-black uppercase tracking-[0.2em] text-sm hover:bg-festive-red hover:shadow-[0_15px_30px_rgba(185,28,28,0.25)] hover:-translate-y-1 transition-all duration-300 mt-8">
-                                Submit Message
+                            
+                            {toast && (
+                                <div className={`px-4 py-3.5 rounded-xl text-center text-sm font-bold border transition-all duration-300 ${
+                                    toast.type === 'success' 
+                                        ? 'bg-green-500/10 border-green-500/20 text-green-600' 
+                                        : 'bg-red-500/10 border-red-500/20 text-red-600'
+                                }`}>
+                                    {toast.message}
+                                </div>
+                            )}
+
+                            <button type="submit" disabled={submitting} className={`w-full py-5 rounded-[1rem] text-white font-black uppercase tracking-[0.2em] text-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 mt-8 ${
+                                submitting ? 'bg-slate-400 cursor-not-allowed' : 'bg-festive-purple hover:bg-festive-red hover:shadow-[0_15px_30px_rgba(185,28,28,0.25)]'
+                            }`}>
+                                {submitting ? 'Sending...' : 'Submit Message'}
                             </button>
                         </form>
                     </div>
