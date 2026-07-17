@@ -170,3 +170,43 @@ Import traces:
 [00:51:00.933] Server  LOG      ✓ Compiled in 227ms
 [00:51:25.750] Server  LOG      ✓ Compiled in 303ms
 [00:53:29.816] Server  LOG      ✓ Compiled in 160ms
+[01:03:38.644] Server  LOG      ✓ Compiled in 208ms
+[01:04:37.829] Browser LOG     Order Placed Successfully!
+[01:04:37.829] Browser LOG     %c✅ SUCCESS: Email was sent to the Admin successfully! color: #10b981; font-weight: bold; font-size: 14px;
+[01:04:38.367] Browser ERROR   Audio error: {}
+[01:04:40.366] Browser ERROR   Audio error: {}
+[01:04:41.467] Browser ERROR   Audio error: {}
+[01:04:42.344] Browser ERROR   Audio error: {}
+[01:04:43.845] Browser ERROR   Audio error: {}
+[01:04:45.344] Browser ERROR   Audio error: {}
+[01:04:46.844] Browser ERROR   Audio error: {}
+[01:04:48.344] Browser ERROR   Audio error: {}
+[01:06:53.326] Server  LOG      ✓ Compiled in 249ms
+[01:07:00.745] Server  LOG      ✓ Compiled in 123ms
+[01:07:12.041] Server  LOG      ✓ Compiled in 187ms
+[01:08:11.530] Browser LOG     Order Placed Successfully!
+[01:08:11.531] Browser LOG     %c✅ SUCCESS: Email was sent to the Admin successfully! color: #10b981; font-weight: bold; font-size: 14px;
+[01:08:32.808] Browser ERROR   uncaughtError: TypeError: Cannot read properties of undefined (reading 'toUpperCase')
+[01:08:43.321] Browser ERROR   uncaughtError: TypeError: Cannot read properties of undefined (reading 'toUpperCase')
+[01:10:57.699] Server  LOG      ✓ Compiled in 923ms
+[01:11:07.367] Browser ERROR   uncaughtError: TypeError: Cannot read properties of undefined (reading 'toUpperCase')
+[01:11:14.898] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:30:45.470] Server  LOG      ✓ Compiled in 542ms
+[01:32:37.242] Server  LOG      ✓ Compiled in 231ms
+[01:33:02.227] Server  LOG      ✓ Compiled in 464ms
+[01:47:33.332] Server  LOG      ✓ Compiled in 2.1s
+[01:47:56.872] Server  LOG      ✓ Compiled in 1259ms
+[01:48:21.160] Server  LOG      ✓ Compiled in 1085ms
+[01:52:10.971] Browser LOG     Order Placed Successfully!
+[01:52:10.974] Browser LOG     %c✅ SUCCESS: Email was sent to the Admin successfully! color: #10b981; font-weight: bold; font-size: 14px;
+[01:52:58.212] Server  LOG      ✓ Compiled in 1916ms
+[01:54:26.477] Server  LOG      ✓ Compiled in 2.2s
+[01:54:41.685] Server  LOG      ✓ Compiled in 774ms
+[01:54:56.421] Server  LOG      ✓ Compiled in 1214ms
+[01:55:30.429] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:56:31.186] Server  LOG      ✓ Compiled in 899ms
+[01:57:04.232] Server  LOG      ✓ Compiled in 1177ms
+[01:57:22.890] Server  LOG      ✓ Compiled in 802ms
+[01:57:47.515] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:02:29.702] Browser LOG     Order Placed Successfully!
+[02:02:29.705] Browser LOG     %c✅ SUCCESS: Email was sent to the Admin successfully! color: #10b981; font-weight: bold; font-size: 14px;

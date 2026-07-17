@@ -829,38 +829,10 @@ export default function AdminDashboard() {
   const handleOriginalPriceChange = (val: string) => {
     setProductOriginalPrice(val);
     const orig = parseFloat(val);
-    const disc = parseFloat(productDiscount);
-    if (!isNaN(orig) && productApplyDiscount && !isNaN(disc)) {
-      const calculatedOffer = Math.round(orig * (1 - disc / 100));
-      setProductPrice(calculatedOffer.toString());
-    } else if (!isNaN(orig)) {
-      setProductPrice(val);
-    }
-  };
-
-  const handleDiscountChange = (val: string) => {
-    setProductDiscount(val);
-    const orig = parseFloat(productOriginalPrice);
-    const disc = parseFloat(val);
-    if (!isNaN(orig) && productApplyDiscount && !isNaN(disc)) {
-      const calculatedOffer = Math.round(orig * (1 - disc / 100));
-      setProductPrice(calculatedOffer.toString());
-    } else if (isNaN(disc) || !productApplyDiscount) {
-      if (!isNaN(orig)) setProductPrice(productOriginalPrice);
-    }
-  };
-
-  const handleApplyDiscountToggle = (enabled: boolean) => {
-    setProductApplyDiscount(enabled);
-    const orig = parseFloat(productOriginalPrice);
-    if (!enabled) {
-      if (!isNaN(orig)) setProductPrice(productOriginalPrice);
-    } else {
-      const disc = parseFloat(productDiscount);
-      if (!isNaN(orig) && !isNaN(disc)) {
-        const calculatedOffer = Math.round(orig * (1 - disc / 100));
-        setProductPrice(calculatedOffer.toString());
-      }
+    const offer = parseFloat(productPrice);
+    if (!isNaN(orig) && orig > 0 && !isNaN(offer)) {
+      const calculatedDisc = Math.round(((orig - offer) / orig) * 100);
+      setProductDiscount(calculatedDisc >= 0 && calculatedDisc <= 100 ? calculatedDisc.toString() : "0");
     }
   };
 
@@ -910,12 +882,15 @@ export default function AdminDashboard() {
     const cleanBase = productName.replace(/\s*\(.*\)\s*/g, "").trim();
     const finalProductName = productTamilTranslation ? `${cleanBase} (${productTamilTranslation})` : cleanBase;
 
+    const finalDiscount = parseFloat(productDiscount) || 0;
+    const hasDiscount = finalDiscount > 0;
+
     const payload = {
       name: finalProductName,
       price: parseFloat(productPrice),
       originalPrice: parseFloat(productOriginalPrice),
-      discount: productApplyDiscount ? (parseFloat(productDiscount) || 0) : 0,
-      applyDiscount: productApplyDiscount,
+      discount: finalDiscount,
+      applyDiscount: hasDiscount,
       image: productImage,
       categoryId: parseInt(productCategoryId),
     };
@@ -1083,12 +1058,16 @@ export default function AdminDashboard() {
       return;
     }
 
+    const totalAmount = Number(order.total_amount || 0);
+    const totalSavings = Number(order.total_savings || 0);
+
     const numberToWords = (num: number): string => {
+      const integerNum = Math.round(num);
       const a = ['','One ','Two ','Three ','Four ', 'Five ','Six ','Seven ','Eight ','Nine ','Ten ','Eleven ','Twelve ','Thirteen ','Fourteen ','Fifteen ','Sixteen ','Seventeen ','Eighteen ','Nineteen '];
       const b = ['', '', 'Twenty','Thirty','Forty','Fifty', 'Sixty','Seventy','Eighty','Ninety'];
-      if (num === 0) return 'Zero Rupees Only';
-      if (num > 999999999) return '';
-      const n = ('000000000' + num).slice(-9).match(/^(\d{2})(\d{2})(\d{2})(\d{1})(\d{2})$/);
+      if (integerNum === 0) return 'Zero Rupees Only';
+      if (integerNum > 999999999) return '';
+      const n = ('000000000' + integerNum).slice(-9).match(/^(\d{2})(\d{2})(\d{2})(\d{1})(\d{2})$/);
       if (!n) return '';
       let str = '';
       str += (n[1] !== '00') ? (a[Number(n[1])] || b[Number(n[1][0])] + ' ' + a[Number(n[1][1])]) + 'Crore ' : '';
@@ -1099,13 +1078,13 @@ export default function AdminDashboard() {
       return str.trim();
     };
 
-    const discountedItems = order.items.filter((item: any) => item.originalPrice > item.price);
-    const netRateItems = order.items.filter((item: any) => item.originalPrice <= item.price);
+    const discountedItems = order.items.filter((item: any) => Number(item.originalPrice) > Number(item.price));
+    const netRateItems = order.items.filter((item: any) => Number(item.originalPrice) <= Number(item.price));
 
-    const discountedTotalOriginal = discountedItems.reduce((acc: number, item: any) => acc + (item.originalPrice * item.quantity), 0);
-    const discountedTotalOffer = discountedItems.reduce((acc: number, item: any) => acc + (item.price * item.quantity), 0);
+    const discountedTotalOriginal = discountedItems.reduce((acc: number, item: any) => acc + (Number(item.originalPrice) * Number(item.quantity)), 0);
+    const discountedTotalOffer = discountedItems.reduce((acc: number, item: any) => acc + (Number(item.price) * Number(item.quantity)), 0);
     const discountedSavings = discountedTotalOriginal - discountedTotalOffer;
-    const netRateTotal = netRateItems.reduce((acc: number, item: any) => acc + (item.price * item.quantity), 0);
+    const netRateTotal = netRateItems.reduce((acc: number, item: any) => acc + (Number(item.price) * Number(item.quantity)), 0);
 
     const grossTotal = discountedTotalOriginal + netRateTotal;
     const discountPercent = discountedTotalOriginal > 0 ? ((discountedSavings / discountedTotalOriginal) * 100).toFixed(2) : "0.00";
@@ -1131,9 +1110,9 @@ export default function AdminDashboard() {
                 <td class="text-center bold">${idx + 1}</td>
                 <td class="bold">${item.name}</td>
                 <td class="text-center">BOX</td>
-                <td class="text-right">${isNetRate ? item.price.toFixed(2) : item.originalPrice.toFixed(2)}</td>
-                <td class="text-center">${item.quantity.toFixed(2)}</td>
-                <td class="text-right">${(isNetRate ? item.price * item.quantity : item.originalPrice * item.quantity).toFixed(2)}</td>
+                <td class="text-right">${isNetRate ? Number(item.price).toFixed(2) : Number(item.originalPrice).toFixed(2)}</td>
+                <td class="text-center">${Number(item.quantity).toFixed(2)}</td>
+                <td class="text-right">${((isNetRate ? Number(item.price) : Number(item.originalPrice)) * Number(item.quantity)).toFixed(2)}</td>
               </tr>
             `).join('')}
           </tbody>
@@ -1198,7 +1177,7 @@ export default function AdminDashboard() {
             <div class="words-section">
               <div>
                 <div style="font-style: italic; margin-bottom: 5px;">Amount in Words</div>
-                <div class="bold italic">${numberToWords(order.total_amount)}</div>
+                <div class="bold italic">${numberToWords(totalAmount)}</div>
               </div>
             </div>
             <div class="totals-section">
@@ -1216,7 +1195,7 @@ export default function AdminDashboard() {
                 <tr>
                   <td class="bold text-center">Total</td>
                   <td class="text-center"></td>
-                  <td class="text-right">${order.total_amount.toFixed(2)}</td>
+                  <td class="text-right">${totalAmount.toFixed(2)}</td>
                 </tr>
                 <tr class="bg-gray">
                   <td class="bold text-center">Other Charges</td>
@@ -1230,7 +1209,7 @@ export default function AdminDashboard() {
                 </tr>
                 <tr class="bg-dark-gray">
                   <td colspan="2" class="text-center">BILL AMOUNT</td>
-                  <td class="text-right">${order.total_amount.toFixed(2)}</td>
+                  <td class="text-right">${totalAmount.toFixed(2)}</td>
                 </tr>
               </table>
             </div>
@@ -1983,7 +1962,7 @@ export default function AdminDashboard() {
                                 )}
                                 {product.originalPrice > product.price && (
                                   <div className="absolute top-4 left-4 bg-red-500 text-white text-xs font-black px-3 py-1.5 rounded-full uppercase tracking-wider shadow-lg shadow-red-500/30 animate-pulse">
-                                    Sale
+                                    {product.discount || Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)}% OFF
                                   </div>
                                 )}
                               </div>
@@ -1999,7 +1978,7 @@ export default function AdminDashboard() {
                                    <div className="flex items-center gap-2 mb-4 text-sm font-medium">
                                      <span className="text-slate-400">Regular:</span>
                                      <span className="text-slate-500 line-through">₹{product.originalPrice}</span>
-                                     <span className="text-emerald-500 font-bold bg-emerald-50 px-2 py-0.5 rounded-md">Save ₹{(product.originalPrice - product.price).toFixed(0)}</span>
+                                     <span className="text-emerald-500 font-bold bg-emerald-50 px-2 py-0.5 rounded-md">Save {product.discount || Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)}% (₹{(product.originalPrice - product.price).toFixed(0)})</span>
                                    </div>
                                  )}
                                  
@@ -2492,7 +2471,7 @@ export default function AdminDashboard() {
                       </h3>
 
                       {/* Cart Items List */}
-                      <div className="flex-1 overflow-y-auto scrollbar-hide space-y-3 pr-1 min-h-0 relative z-10">
+                      <div className="flex-1 overflow-y-auto space-y-2 pr-2 min-h-0 relative z-10">
                         {billingCart.length === 0 ? (
                           <div className="h-full flex flex-col items-center justify-center text-slate-500 text-base font-bold tracking-tight italic opacity-60">
                             <span className="text-5xl mb-4">🛒</span>
@@ -2500,42 +2479,40 @@ export default function AdminDashboard() {
                           </div>
                         ) : (
                           billingCart.map((item) => (
-                            <div key={item.id} className="flex flex-col bg-slate-800/50 rounded-2xl p-4 border border-slate-700/50 hover:border-slate-500 transition-colors backdrop-blur-sm">
-                              <div className="flex justify-between items-start mb-3">
-                                <span className="text-sm font-bold text-slate-200 line-clamp-1 flex-1 pr-2 ">{item.name}</span>
-                                <button 
-                                  onClick={() => setBillingCart(billingCart.filter(i => i.id !== item.id))}
-                                  className="text-slate-400 hover:text-red-400 hover:bg-red-500/10 rounded-lg px-2 py-1 ml-2 transition-colors cursor-pointer"
-                                >✕</button>
+                            <div key={item.id} className="flex items-center justify-between bg-slate-800/40 rounded-xl p-3 border border-slate-700/50 hover:border-slate-500 transition-colors backdrop-blur-sm gap-3">
+                              <div className="flex-1 min-w-0">
+                                <span className="text-sm font-bold text-slate-200 block truncate" title={item.name}>{item.name}</span>
+                                <span className="text-xs text-indigo-400 font-bold mt-0.5 block">₹{(item.price * item.quantity).toFixed(2)}</span>
                               </div>
-                              <div className="flex justify-between items-center">
-                                <div className="flex items-center bg-slate-900 rounded-xl border border-slate-700">
-                                  <button onClick={() => {
-                                    if(item.quantity > 1) {
-                                      setBillingCart(billingCart.map(i => i.id === item.id ? { ...i, quantity: i.quantity - 1 } : i));
-                                    } else {
-                                      setBillingCart(billingCart.filter(i => i.id !== item.id));
-                                    }
-                                  }} className="px-3 py-1.5 text-slate-400 hover:text-white font-black cursor-pointer">−</button>
-                                  <span className="px-2 py-1.5 text-sm font-black text-white w-8 text-center">{item.quantity}</span>
-                                  <button onClick={() => setBillingCart(billingCart.map(i => i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i))} className="px-3 py-1.5 text-slate-400 hover:text-white font-black cursor-pointer">+</button>
-                                </div>
-                                <span className="text-lg font-black text-indigo-400">₹{(item.price * item.quantity).toFixed(2)}</span>
+                              <div className="flex items-center bg-slate-900 rounded-lg border border-slate-700 shrink-0">
+                                <button onClick={() => {
+                                  if(item.quantity > 1) {
+                                    setBillingCart(billingCart.map(i => i.id === item.id ? { ...i, quantity: i.quantity - 1 } : i));
+                                  } else {
+                                    setBillingCart(billingCart.filter(i => i.id !== item.id));
+                                  }
+                                }} className="px-2 py-1 text-slate-400 hover:text-white font-black cursor-pointer text-xs">−</button>
+                                <span className="px-1 py-1 text-xs font-black text-white w-6 text-center">{item.quantity}</span>
+                                <button onClick={() => setBillingCart(billingCart.map(i => i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i))} className="px-2 py-1 text-slate-400 hover:text-white font-black cursor-pointer text-xs">+</button>
                               </div>
+                              <button 
+                                onClick={() => setBillingCart(billingCart.filter(i => i.id !== item.id))}
+                                className="text-slate-400 hover:text-red-400 rounded-lg p-1.5 transition-colors cursor-pointer shrink-0 text-sm"
+                              >✕</button>
                             </div>
                           ))
                         )}
                       </div>
 
                       {/* Customer Info & Summary */}
-                      <div className="mt-5 pt-5 border-t border-slate-700/50 shrink-0 relative z-10">
-                        <div className="space-y-3 mb-6">
-                          <input type="text" placeholder="Customer Name" value={billingCustomer.name} onChange={(e) => setBillingCustomer({...billingCustomer, name: e.target.value})} className="w-full bg-slate-800/80 border border-slate-700 rounded-xl px-4 py-3 text-sm font-semibold text-white outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all placeholder:text-slate-500" />
-                          <div className="grid grid-cols-2 gap-3">
-                            <input type="text" placeholder="Phone" value={billingCustomer.phone} onChange={(e) => setBillingCustomer({...billingCustomer, phone: e.target.value})} className="bg-slate-800/80 border border-slate-700 rounded-xl px-4 py-3 text-sm font-semibold text-white outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all placeholder:text-slate-500" />
-                            <input type="email" placeholder="Email (Opt)" value={billingCustomer.email} onChange={(e) => setBillingCustomer({...billingCustomer, email: e.target.value})} className="bg-slate-800/80 border border-slate-700 rounded-xl px-4 py-3 text-sm font-semibold text-white outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all placeholder:text-slate-500" />
-                            <input type="text" placeholder="City" value={billingCustomer.city} onChange={(e) => setBillingCustomer({...billingCustomer, city: e.target.value})} className="bg-slate-800/80 border border-slate-700 rounded-xl px-4 py-3 text-sm font-semibold text-white outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all placeholder:text-slate-500" />
-                            <input type="text" placeholder="Address" value={billingCustomer.address} onChange={(e) => setBillingCustomer({...billingCustomer, address: e.target.value})} className="bg-slate-800/80 border border-slate-700 rounded-xl px-4 py-3 text-sm font-semibold text-white outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all placeholder:text-slate-500" />
+                      <div className="mt-4 pt-4 border-t border-slate-700/50 shrink-0 relative z-10">
+                        <div className="space-y-2 mb-4">
+                          <input type="text" placeholder="Customer Name" value={billingCustomer.name} onChange={(e) => setBillingCustomer({...billingCustomer, name: e.target.value})} className="w-full bg-slate-800/80 border border-slate-700 rounded-xl px-4 py-2.5 text-sm font-semibold text-white outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all placeholder:text-slate-500" />
+                          <div className="grid grid-cols-2 gap-2">
+                            <input type="text" placeholder="Phone" value={billingCustomer.phone} onChange={(e) => setBillingCustomer({...billingCustomer, phone: e.target.value})} className="bg-slate-800/80 border border-slate-700 rounded-xl px-4 py-2.5 text-sm font-semibold text-white outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all placeholder:text-slate-500" />
+                            <input type="email" placeholder="Email (Opt)" value={billingCustomer.email} onChange={(e) => setBillingCustomer({...billingCustomer, email: e.target.value})} className="bg-slate-800/80 border border-slate-700 rounded-xl px-4 py-2.5 text-sm font-semibold text-white outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all placeholder:text-slate-500" />
+                            <input type="text" placeholder="City" value={billingCustomer.city} onChange={(e) => setBillingCustomer({...billingCustomer, city: e.target.value})} className="bg-slate-800/80 border border-slate-700 rounded-xl px-4 py-2.5 text-sm font-semibold text-white outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all placeholder:text-slate-500" />
+                            <input type="text" placeholder="Address" value={billingCustomer.address} onChange={(e) => setBillingCustomer({...billingCustomer, address: e.target.value})} className="bg-slate-800/80 border border-slate-700 rounded-xl px-4 py-2.5 text-sm font-semibold text-white outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all placeholder:text-slate-500" />
                           </div>
                         </div>
 
@@ -2989,16 +2966,8 @@ export default function AdminDashboard() {
                   <div className="space-y-2 flex flex-col justify-between">
                     <div className="flex items-center justify-between h-5">
                       <label className="block text-xs font-black uppercase tracking-widest text-blue-300 mt-1">
-                        Discount
+                        Discount (Auto-calculated)
                       </label>
-                      <button
-                        type="button"
-                        onClick={() => handleApplyDiscountToggle(!productApplyDiscount)}
-                        className={`w-10 h-5 rounded-full transition-colors relative flex items-center shadow-inner focus:outline-none ${productApplyDiscount ? 'bg-blue-500' : 'bg-slate-700 border border-slate-600'}`}
-                        title={productApplyDiscount ? "Disable discount for this product" : "Enable discount for this product"}
-                      >
-                        <span className={`w-3.5 h-3.5 rounded-full bg-white absolute transition-transform shadow-md ${productApplyDiscount ? 'translate-x-[22px]' : 'translate-x-[3px]'}`} />
-                      </button>
                     </div>
                     <div className="relative">
                       <input
@@ -3006,14 +2975,13 @@ export default function AdminDashboard() {
                         min="0"
                         max="100"
                         required
-                        disabled={!productApplyDiscount}
-                        value={productApplyDiscount ? productDiscount : "0"}
-                        onChange={(e) => handleDiscountChange(e.target.value)}
-                        placeholder="80"
-                        title={productApplyDiscount ? "Discount is managed globally" : "Discount is disabled for this product"}
-                        className={`w-full rounded-xl py-3 px-4 pr-8 text-base font-bold outline-none transition-all shadow-inner ${productApplyDiscount ? 'bg-slate-800/50 border border-slate-700 text-slate-400 cursor-not-allowed' : 'bg-slate-800/20 border border-slate-700/50 text-slate-600 cursor-not-allowed'}`}
+                        disabled={true}
+                        value={productDiscount || "0"}
+                        placeholder="0"
+                        title="Discount is calculated automatically from Original and Offer prices"
+                        className="w-full bg-slate-800/40 border border-slate-700/80 text-slate-400 cursor-not-allowed rounded-xl py-3 px-4 pr-8 text-base font-bold outline-none transition-all shadow-inner"
                       />
-                      <span className={`absolute inset-y-0 right-4 flex items-center font-bold ${productApplyDiscount ? 'text-slate-500' : 'text-slate-600'}`}>%</span>
+                      <span className="absolute inset-y-0 right-4 flex items-center font-bold text-slate-500">%</span>
                     </div>
                   </div>
 

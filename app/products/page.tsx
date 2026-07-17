@@ -248,42 +248,46 @@ function ProductsPageInner() {
                           key={prod.id}
                           className="flex flex-col p-4 md:p-5 rounded-2xl border border-gray-100 bg-white shadow-[0_8px_30px_rgb(0,0,0,0.06)] relative overflow-hidden group hover:border-festive-gold/40 hover:shadow-[0_20px_40px_rgb(0,0,0,0.12)] transition-all duration-300"
                         >
-                          {/* Discount Badge */}
-                          <div className="absolute top-3 right-3 z-10">
-                            <span className="bg-gradient-to-r from-festive-red to-red-500 text-white font-black px-2.5 py-1 rounded-full text-[9px] tracking-widest shadow-md uppercase inline-flex items-center gap-1 border border-white/20">
-                              🔥 {prod.discount}% OFF
-                            </span>
-                          </div>
-
-                          {/* Image Container */}
-                          <div className="w-full h-44 md:h-48 rounded-xl border border-gray-100 bg-gray-50/50 flex items-center justify-center p-4 overflow-hidden mb-5 group-hover:bg-amber-50/30 transition-colors">
-                            <img
-                              src={prod.image || "/assets/images/placeholder.png"}
-                              alt={prod.name}
-                              loading="lazy"
-                              decoding="async"
-                              className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500 drop-shadow-sm"
-                            />
-                          </div>
-
-                          {/* Details */}
-                          <div className="flex-1 flex flex-col">
-                            <span className="text-[9px] font-bold text-slate-500 bg-gray-50 border border-gray-200 px-2 py-0.5 rounded uppercase tracking-widest self-start mb-2">
-                              {group.name}
-                            </span>
-                            <h4 className="font-black text-slate-800 text-base md:text-[1.05rem] line-clamp-2 leading-snug mb-3 group-hover:text-festive-purple transition-colors">
-                              {prod.name}
-                            </h4>
-
-                            <div className="mt-auto">
-                              <div className="flex items-end gap-2.5 mb-5">
-                                <span className="text-2xl md:text-[1.6rem] font-black text-festive-purple drop-shadow-sm">
-                                  ₹{prod.price}
-                                </span>
-                                <span className="text-sm text-slate-400 line-through font-bold pb-0.5">
-                                  ₹{prod.originalPrice}
-                                </span>
-                              </div>
+                           {/* Discount Badge */}
+                           {prod.originalPrice > prod.price && (
+                             <div className="absolute top-3 right-3 z-10">
+                               <span className="bg-gradient-to-r from-festive-red to-red-500 text-white font-black px-2.5 py-1 rounded-full text-[9px] tracking-widest shadow-md uppercase inline-flex items-center gap-1 border border-white/20">
+                                 🔥 {prod.discount || Math.round(((prod.originalPrice - prod.price) / prod.originalPrice) * 100)}% OFF
+                               </span>
+                             </div>
+                           )}
+ 
+                           {/* Image Container */}
+                           <div className="w-full h-44 md:h-48 rounded-xl border border-gray-100 bg-gray-50/50 flex items-center justify-center p-4 overflow-hidden mb-5 group-hover:bg-amber-50/30 transition-colors">
+                             <img
+                               src={prod.image || "/assets/images/placeholder.png"}
+                               alt={prod.name}
+                               loading="lazy"
+                               decoding="async"
+                               className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500 drop-shadow-sm"
+                             />
+                           </div>
+ 
+                           {/* Details */}
+                           <div className="flex-1 flex flex-col">
+                             <span className="text-[9px] font-bold text-slate-500 bg-gray-50 border border-gray-200 px-2 py-0.5 rounded uppercase tracking-widest self-start mb-2">
+                               {group.name}
+                             </span>
+                             <h4 className="font-black text-slate-800 text-base md:text-[1.05rem] line-clamp-2 leading-snug mb-3 group-hover:text-festive-purple transition-colors">
+                               {prod.name}
+                             </h4>
+ 
+                             <div className="mt-auto">
+                               <div className="flex items-end gap-2.5 mb-5">
+                                 <span className="text-2xl md:text-[1.6rem] font-black text-festive-purple drop-shadow-sm">
+                                   ₹{prod.price}
+                                 </span>
+                                 {prod.originalPrice > prod.price && (
+                                   <span className="text-sm text-slate-400 line-through font-bold pb-0.5">
+                                     ₹{prod.originalPrice}
+                                   </span>
+                                 )}
+                               </div>
 
                               {/* Cart Actions */}
                               <div className="border-t border-gray-100 pt-5 mt-2">

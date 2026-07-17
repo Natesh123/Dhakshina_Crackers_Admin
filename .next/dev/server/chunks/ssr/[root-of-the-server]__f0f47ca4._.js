@@ -1501,7 +1501,7 @@ function ProductCard({ id, name, price, originalPrice, image, category, category
                         lineNumber: 32,
                         columnNumber: 17
                     }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    originalPrice > price && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "absolute top-4 left-4 bg-festive-red text-white text-xs font-black px-3 py-1.5 rounded-lg uppercase tracking-wider shadow-md",
                         children: [
                             "Save ₹",
@@ -1509,10 +1509,10 @@ function ProductCard({ id, name, price, originalPrice, image, category, category
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/components/ProductCard.tsx",
-                        lineNumber: 40,
-                        columnNumber: 17
+                        lineNumber: 41,
+                        columnNumber: 21
                     }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    originalPrice > price && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "absolute top-4 right-4 bg-festive-gold text-festive-purple text-xs font-black px-3 py-1.5 rounded-lg uppercase tracking-wider shadow-md",
                         children: [
                             discountPct,
@@ -1520,8 +1520,8 @@ function ProductCard({ id, name, price, originalPrice, image, category, category
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/components/ProductCard.tsx",
-                        lineNumber: 45,
-                        columnNumber: 17
+                        lineNumber: 48,
+                        columnNumber: 21
                     }, this)
                 ]
             }, void 0, true, {
@@ -1537,7 +1537,7 @@ function ProductCard({ id, name, price, originalPrice, image, category, category
                         children: category
                     }, void 0, false, {
                         fileName: "[project]/app/components/ProductCard.tsx",
-                        lineNumber: 52,
+                        lineNumber: 56,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -1545,7 +1545,7 @@ function ProductCard({ id, name, price, originalPrice, image, category, category
                         children: name
                     }, void 0, false, {
                         fileName: "[project]/app/components/ProductCard.tsx",
-                        lineNumber: 53,
+                        lineNumber: 57,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1559,10 +1559,10 @@ function ProductCard({ id, name, price, originalPrice, image, category, category
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/components/ProductCard.tsx",
-                                lineNumber: 58,
+                                lineNumber: 62,
                                 columnNumber: 21
                             }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                            originalPrice > price && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                 className: "text-base text-gray-400 line-through font-bold",
                                 children: [
                                     "₹",
@@ -1570,13 +1570,13 @@ function ProductCard({ id, name, price, originalPrice, image, category, category
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/components/ProductCard.tsx",
-                                lineNumber: 59,
-                                columnNumber: 21
+                                lineNumber: 64,
+                                columnNumber: 25
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/components/ProductCard.tsx",
-                        lineNumber: 57,
+                        lineNumber: 61,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1585,13 +1585,13 @@ function ProductCard({ id, name, price, originalPrice, image, category, category
                         children: "➕ Add to Cart"
                     }, void 0, false, {
                         fileName: "[project]/app/components/ProductCard.tsx",
-                        lineNumber: 63,
+                        lineNumber: 69,
                         columnNumber: 17
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/components/ProductCard.tsx",
-                lineNumber: 51,
+                lineNumber: 55,
                 columnNumber: 13
             }, this)
         ]

@@ -37,14 +37,18 @@ export default function ProductCard({ id, name, price, originalPrice, image, cat
                 />
                 
                 {/* Sale Badge */}
-                <div className="absolute top-4 left-4 bg-festive-red text-white text-xs font-black px-3 py-1.5 rounded-lg uppercase tracking-wider shadow-md">
-                    Save ₹{originalPrice - price}
-                </div>
+                {originalPrice > price && (
+                    <div className="absolute top-4 left-4 bg-festive-red text-white text-xs font-black px-3 py-1.5 rounded-lg uppercase tracking-wider shadow-md">
+                        Save ₹{originalPrice - price}
+                    </div>
+                )}
 
                 {/* Offer % */}
-                <div className="absolute top-4 right-4 bg-festive-gold text-festive-purple text-xs font-black px-3 py-1.5 rounded-lg uppercase tracking-wider shadow-md">
-                    {discountPct}% OFF
-                </div>
+                {originalPrice > price && (
+                    <div className="absolute top-4 right-4 bg-festive-gold text-festive-purple text-xs font-black px-3 py-1.5 rounded-lg uppercase tracking-wider shadow-md">
+                        {discountPct}% OFF
+                    </div>
+                )}
             </div>
 
             {/* Content */}
@@ -56,7 +60,9 @@ export default function ProductCard({ id, name, price, originalPrice, image, cat
 
                 <div className="flex items-center gap-3 mb-6 mt-auto">
                     <span className="text-3xl font-black text-festive-purple">₹{price}</span>
-                    <span className="text-base text-gray-400 line-through font-bold">₹{originalPrice}</span>
+                    {originalPrice > price && (
+                        <span className="text-base text-gray-400 line-through font-bold">₹{originalPrice}</span>
+                    )}
                 </div>
 
                 {/* Action Button — adds to cart & goes to /products */}

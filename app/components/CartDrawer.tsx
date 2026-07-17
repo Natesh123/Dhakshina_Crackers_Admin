@@ -26,6 +26,7 @@ export default function CartDrawer() {
   const [showCheckoutForm, setShowCheckoutForm] = useState(false);
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
   const [errors, setErrors] = useState({ name: false, phone: false, email: false, city: false, address: false });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   if (!isCartOpen) return null;
 
@@ -33,7 +34,7 @@ export default function CartDrawer() {
     const newErrors = {
       name: !customerName.trim(),
       phone: !customerPhone.trim(),
-      email: !customerEmail.trim() || !customerEmail.includes('@'),
+      email: customerEmail.trim() !== "" ? !customerEmail.includes('@') : false,
       city: !customerCity.trim(),
       address: !customerAddress.trim(),
     };
@@ -44,6 +45,7 @@ export default function CartDrawer() {
       return;
     }
 
+    setIsSubmitting(true);
     try {
       const orderData = {
         customer_name: customerName,
@@ -90,6 +92,8 @@ export default function CartDrawer() {
     } catch (error) {
       console.error('Error submitting order:', error);
       alert('There was a problem submitting your order. Please try again.');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -104,6 +108,14 @@ export default function CartDrawer() {
       {/* Centered Modal Container */}
       <div className="relative w-full max-w-2xl max-h-[90vh] bg-white border border-gray-100 rounded-3xl text-slate-800 flex flex-col shadow-[0_20px_60px_rgba(0,0,0,0.15)] overflow-hidden animate-fadeIn">
         
+        {/* Submitting Loading Overlay */}
+        {isSubmitting && (
+          <div className="absolute inset-0 z-50 bg-white/80 backdrop-blur-sm flex flex-col justify-center items-center gap-4">
+            <div className="w-12 h-12 border-4 border-festive-red border-t-transparent rounded-full animate-spin"></div>
+            <p className="font-bold text-slate-800 text-lg animate-pulse tracking-wide">Placing Your Order...</p>
+          </div>
+        )}
+
         {/* Subtle Ambient Glow inside modal */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-1/2 bg-festive-gold/5 blur-[80px] pointer-events-none rounded-full"></div>
 
@@ -277,7 +289,7 @@ export default function CartDrawer() {
                         placeholder="e.g. name@example.com"
                         className={`w-full bg-white border ${errors.email ? 'border-red-500 focus:border-red-500 focus:ring-red-500/20' : 'border-gray-300 focus:border-festive-gold focus:ring-festive-gold/20'} rounded-lg px-4 py-3 text-base text-slate-900 focus:outline-none focus:ring-2 transition-all placeholder:text-gray-400 font-medium shadow-sm`}
                       />
-                      {errors.email && <span className="text-red-500 text-sm font-bold mt-1 block animate-fadeIn">* Valid Email is required</span>}
+                      {errors.email && <span className="text-red-500 text-sm font-bold mt-1 block animate-fadeIn">* Please enter a valid email address</span>}
                     </div>
                     <div className="space-y-1.5 sm:col-span-2">
                       <label className="block text-xs font-black uppercase tracking-widest text-slate-500">

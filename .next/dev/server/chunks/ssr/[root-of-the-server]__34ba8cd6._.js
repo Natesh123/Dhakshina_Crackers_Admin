@@ -1530,24 +1530,24 @@ function ProductsPageInner() {
                                                 return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "flex flex-col p-4 md:p-5 rounded-2xl border border-gray-100 bg-white shadow-[0_8px_30px_rgb(0,0,0,0.06)] relative overflow-hidden group hover:border-festive-gold/40 hover:shadow-[0_20px_40px_rgb(0,0,0,0.12)] transition-all duration-300",
                                                     children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        prod.originalPrice > prod.price && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                             className: "absolute top-3 right-3 z-10",
                                                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                 className: "bg-gradient-to-r from-festive-red to-red-500 text-white font-black px-2.5 py-1 rounded-full text-[9px] tracking-widest shadow-md uppercase inline-flex items-center gap-1 border border-white/20",
                                                                 children: [
                                                                     "🔥 ",
-                                                                    prod.discount,
+                                                                    prod.discount || Math.round((prod.originalPrice - prod.price) / prod.originalPrice * 100),
                                                                     "% OFF"
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/app/products/page.tsx",
-                                                                lineNumber: 253,
-                                                                columnNumber: 29
+                                                                lineNumber: 254,
+                                                                columnNumber: 32
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/products/page.tsx",
-                                                            lineNumber: 252,
-                                                            columnNumber: 27
+                                                            lineNumber: 253,
+                                                            columnNumber: 30
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                             className: "w-full h-44 md:h-48 rounded-xl border border-gray-100 bg-gray-50/50 flex items-center justify-center p-4 overflow-hidden mb-5 group-hover:bg-amber-50/30 transition-colors",
@@ -1559,13 +1559,13 @@ function ProductsPageInner() {
                                                                 className: "w-full h-full object-contain group-hover:scale-110 transition-transform duration-500 drop-shadow-sm"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/products/page.tsx",
-                                                                lineNumber: 260,
-                                                                columnNumber: 29
+                                                                lineNumber: 262,
+                                                                columnNumber: 30
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/products/page.tsx",
-                                                            lineNumber: 259,
-                                                            columnNumber: 27
+                                                            lineNumber: 261,
+                                                            columnNumber: 28
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                             className: "flex-1 flex flex-col",
@@ -1575,16 +1575,16 @@ function ProductsPageInner() {
                                                                     children: group.name
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/products/page.tsx",
-                                                                    lineNumber: 271,
-                                                                    columnNumber: 29
+                                                                    lineNumber: 273,
+                                                                    columnNumber: 30
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
                                                                     className: "font-black text-slate-800 text-base md:text-[1.05rem] line-clamp-2 leading-snug mb-3 group-hover:text-festive-purple transition-colors",
                                                                     children: prod.name
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/products/page.tsx",
-                                                                    lineNumber: 274,
-                                                                    columnNumber: 29
+                                                                    lineNumber: 276,
+                                                                    columnNumber: 30
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                     className: "mt-auto",
@@ -1600,10 +1600,10 @@ function ProductsPageInner() {
                                                                                     ]
                                                                                 }, void 0, true, {
                                                                                     fileName: "[project]/app/products/page.tsx",
-                                                                                    lineNumber: 280,
-                                                                                    columnNumber: 33
+                                                                                    lineNumber: 282,
+                                                                                    columnNumber: 34
                                                                                 }, this),
-                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                prod.originalPrice > prod.price && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                                     className: "text-sm text-slate-400 line-through font-bold pb-0.5",
                                                                                     children: [
                                                                                         "₹",
@@ -1611,14 +1611,14 @@ function ProductsPageInner() {
                                                                                     ]
                                                                                 }, void 0, true, {
                                                                                     fileName: "[project]/app/products/page.tsx",
-                                                                                    lineNumber: 283,
-                                                                                    columnNumber: 33
+                                                                                    lineNumber: 286,
+                                                                                    columnNumber: 36
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/app/products/page.tsx",
-                                                                            lineNumber: 279,
-                                                                            columnNumber: 31
+                                                                            lineNumber: 281,
+                                                                            columnNumber: 32
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                             className: "border-t border-gray-100 pt-5 mt-2",
@@ -1631,7 +1631,7 @@ function ProductsPageInner() {
                                                                                         children: "−"
                                                                                     }, void 0, false, {
                                                                                         fileName: "[project]/app/products/page.tsx",
-                                                                                        lineNumber: 292,
+                                                                                        lineNumber: 296,
                                                                                         columnNumber: 37
                                                                                     }, this),
                                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1639,7 +1639,7 @@ function ProductsPageInner() {
                                                                                         children: qty
                                                                                     }, void 0, false, {
                                                                                         fileName: "[project]/app/products/page.tsx",
-                                                                                        lineNumber: 298,
+                                                                                        lineNumber: 302,
                                                                                         columnNumber: 37
                                                                                     }, this),
                                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1648,13 +1648,13 @@ function ProductsPageInner() {
                                                                                         children: "+"
                                                                                     }, void 0, false, {
                                                                                         fileName: "[project]/app/products/page.tsx",
-                                                                                        lineNumber: 301,
+                                                                                        lineNumber: 305,
                                                                                         columnNumber: 37
                                                                                     }, this)
                                                                                 ]
                                                                             }, void 0, true, {
                                                                                 fileName: "[project]/app/products/page.tsx",
-                                                                                lineNumber: 291,
+                                                                                lineNumber: 295,
                                                                                 columnNumber: 35
                                                                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                                                                 onClick: ()=>addToCart({
@@ -1672,32 +1672,32 @@ function ProductsPageInner() {
                                                                                         children: "🛒"
                                                                                     }, void 0, false, {
                                                                                         fileName: "[project]/app/products/page.tsx",
-                                                                                        lineNumber: 322,
+                                                                                        lineNumber: 326,
                                                                                         columnNumber: 37
                                                                                     }, this),
                                                                                     " ADD TO CART"
                                                                                 ]
                                                                             }, void 0, true, {
                                                                                 fileName: "[project]/app/products/page.tsx",
-                                                                                lineNumber: 309,
+                                                                                lineNumber: 313,
                                                                                 columnNumber: 35
                                                                             }, this)
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/products/page.tsx",
-                                                                            lineNumber: 289,
+                                                                            lineNumber: 293,
                                                                             columnNumber: 31
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/app/products/page.tsx",
-                                                                    lineNumber: 278,
-                                                                    columnNumber: 29
+                                                                    lineNumber: 280,
+                                                                    columnNumber: 30
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/products/page.tsx",
-                                                            lineNumber: 270,
-                                                            columnNumber: 27
+                                                            lineNumber: 272,
+                                                            columnNumber: 28
                                                         }, this)
                                                     ]
                                                 }, prod.id, true, {
@@ -1735,12 +1735,12 @@ function ProductsPageInner() {
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$Footer$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                 fileName: "[project]/app/products/page.tsx",
-                lineNumber: 340,
+                lineNumber: 344,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$ContactFloatingButtons$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                 fileName: "[project]/app/products/page.tsx",
-                lineNumber: 343,
+                lineNumber: 347,
                 columnNumber: 7
             }, this)
         ]
@@ -1756,17 +1756,17 @@ function ProductsPage() {
             className: "min-h-screen bg-[#fdfbf7]"
         }, void 0, false, {
             fileName: "[project]/app/products/page.tsx",
-            lineNumber: 349,
+            lineNumber: 353,
             columnNumber: 25
         }, void 0),
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(ProductsPageInner, {}, void 0, false, {
             fileName: "[project]/app/products/page.tsx",
-            lineNumber: 350,
+            lineNumber: 354,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/app/products/page.tsx",
-        lineNumber: 349,
+        lineNumber: 353,
         columnNumber: 5
     }, this);
 }
