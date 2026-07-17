@@ -1,0 +1,246 @@
+[00:00:02.813] Server  LOG      ✓ Ready in 2.2s
+[00:00:38.755] Server  LOG      ○ Compiling / ...
+[00:00:42.810] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:43.435] Browser WARN    Image with src "/assets/images/sri_dhakshina_logo.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:00:43.712] Browser WARN    Image with src "/assets/images/products/sky_shots.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:00:43.712] Browser WARN    Image with src "/assets/images/products/rockets.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:00:43.712] Browser WARN    Image with src "/assets/images/products/garlands.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:00:43.712] Browser WARN    Image with src "/assets/images/products/ground_chakkars.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:00:52.434] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:00.679] Browser WARN    Image with src "/assets/images/products/flower_pots.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:01:01.578] Browser WARN    Image with src "/assets/images/products/sparklers.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:01:02.525] Browser WARN    Image with src "/assets/images/gallery/firework_2.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:01:02.525] Browser WARN    Image with src "/assets/images/gallery/firework_1.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:01:02.525] Browser WARN    Image with src "/assets/images/gallery/firework_3.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:01:02.525] Browser WARN    Image with src "/assets/images/gallery/firework_4.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:01:03.291] Browser WARN    Image with src "/assets/images/brands/starvell.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:01:03.291] Browser WARN    Image with src "/assets/images/brands/sss.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:01:03.291] Browser WARN    Image with src "/assets/images/brands/sonny.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:01:03.292] Browser WARN    Image with src "/assets/images/brands/chettapandian.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:03:49.451] Server  LOG      ✓ Compiled in 406ms
+[00:03:51.841] Server  LOG      ✓ Compiled in 755ms
+[00:03:53.610] Server  LOG      ✓ Compiled in 305ms
+[00:04:29.339] Server  LOG      ✓ Compiled in 144ms
+[00:04:31.408] Server  LOG      ✓ Compiled in 195ms
+[00:06:54.839] Server  LOG      ✓ Compiled in 654ms
+[00:06:57.085] Server  LOG      ✓ Compiled in 618ms
+[00:08:17.281] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:08:18.179] Browser WARN    Image with src "/assets/images/sri_dhakshina_logo.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:08:18.179] Browser WARN    Image with src "/assets/images/gallery/firework_1.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:08:18.179] Browser WARN    Image with src "/assets/images/gallery/firework_2.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:08:18.179] Browser WARN    Image with src "/assets/images/gallery/firework_3.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:08:18.179] Browser WARN    Image with src "/assets/images/gallery/firework_4.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:08:18.179] Browser WARN    Image with src "/assets/images/brands/sonny.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:08:18.179] Browser WARN    Image with src "/assets/images/brands/starvell.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:08:18.179] Browser WARN    Image with src "/assets/images/brands/chettapandian.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:08:18.179] Browser WARN    Image with src "/assets/images/brands/sss.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:08:18.179] Browser WARN    Image with src "/assets/images/products/garlands.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:08:18.179] Browser WARN    Image with src "/assets/images/products/sky_shots.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:08:18.179] Browser WARN    Image with src "/assets/images/products/rockets.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:08:18.179] Browser WARN    Image with src "/assets/images/products/ground_chakkars.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:08:18.180] Browser WARN    Image with src "/assets/images/products/flower_pots.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:08:18.180] Browser WARN    Image with src "/assets/images/products/sparklers.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:17:22.960] Server  LOG      ✓ Compiled in 592ms
+[00:17:40.345] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:17:41.674] Browser WARN    Image with src "/assets/images/sri_dhakshina_logo.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:17:41.674] Browser WARN    Image with src "/assets/images/gallery/firework_1.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:17:41.674] Browser WARN    Image with src "/assets/images/gallery/firework_2.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:17:41.674] Browser WARN    Image with src "/assets/images/gallery/firework_3.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:17:41.674] Browser WARN    Image with src "/assets/images/gallery/firework_4.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:17:41.674] Browser WARN    Image with src "/assets/images/brands/sonny.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:17:41.674] Browser WARN    Image with src "/assets/images/brands/starvell.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:17:41.674] Browser WARN    Image with src "/assets/images/brands/chettapandian.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:17:41.674] Browser WARN    Image with src "/assets/images/brands/sss.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:17:41.674] Browser WARN    Image with src "/assets/images/products/garlands.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:17:41.674] Browser WARN    Image with src "/assets/images/products/sky_shots.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:17:41.674] Browser WARN    Image with src "/assets/images/products/rockets.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:17:41.674] Browser WARN    Image with src "/assets/images/products/ground_chakkars.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:17:41.674] Browser WARN    Image with src "/assets/images/products/flower_pots.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:17:41.674] Browser WARN    Image with src "/assets/images/products/sparklers.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:50:15.590] Server  LOG      ✓ Compiled in 765ms
+[00:54:57.524] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:54:58.397] Browser WARN    Image with src "/assets/images/sri_dhakshina_logo.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:54:58.397] Browser WARN    Image with src "/assets/images/gallery/firework_1.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:54:58.397] Browser WARN    Image with src "/assets/images/gallery/firework_2.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:54:58.397] Browser WARN    Image with src "/assets/images/gallery/firework_3.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:54:58.397] Browser WARN    Image with src "/assets/images/gallery/firework_4.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:54:58.397] Browser WARN    Image with src "/assets/images/brands/sonny.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:54:58.397] Browser WARN    Image with src "/assets/images/brands/starvell.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:54:58.397] Browser WARN    Image with src "/assets/images/brands/chettapandian.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:54:58.397] Browser WARN    Image with src "/assets/images/brands/sss.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:54:58.397] Browser WARN    Image with src "/assets/images/products/garlands.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:54:58.397] Browser WARN    Image with src "/assets/images/products/sky_shots.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:54:58.397] Browser WARN    Image with src "/assets/images/products/rockets.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:54:58.397] Browser WARN    Image with src "/assets/images/products/ground_chakkars.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:54:58.397] Browser WARN    Image with src "/assets/images/products/flower_pots.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:54:58.397] Browser WARN    Image with src "/assets/images/products/sparklers.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:57:08.684] Server  LOG      ✓ Compiled in 652ms
+[01:00:33.588] Server  LOG      ✓ Compiled in 905ms
+[01:02:35.106] Server  LOG      ✓ Compiled in 666ms
+[01:04:32.075] Server  LOG      ✓ Compiled in 672ms
+[01:05:02.989] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:05:03.846] Browser WARN    Image with src "/assets/images/sri_dhakshina_logo.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:05:03.846] Browser WARN    Image with src "/assets/images/gallery/firework_1.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:05:03.846] Browser WARN    Image with src "/assets/images/gallery/firework_2.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:05:03.846] Browser WARN    Image with src "/assets/images/gallery/firework_3.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:05:03.846] Browser WARN    Image with src "/assets/images/gallery/firework_4.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:05:03.846] Browser WARN    Image with src "/assets/images/brands/sonny.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:05:03.846] Browser WARN    Image with src "/assets/images/brands/starvell.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:05:03.846] Browser WARN    Image with src "/assets/images/brands/chettapandian.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:05:03.846] Browser WARN    Image with src "/assets/images/brands/sss.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:05:03.846] Browser WARN    Image with src "/assets/images/products/garlands.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:05:03.846] Browser WARN    Image with src "/assets/images/products/sky_shots.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:05:03.846] Browser WARN    Image with src "/assets/images/products/rockets.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:05:03.846] Browser WARN    Image with src "/assets/images/products/ground_chakkars.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:05:03.846] Browser WARN    Image with src "/assets/images/products/flower_pots.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:05:03.846] Browser WARN    Image with src "/assets/images/products/sparklers.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:06:34.792] Server  LOG      ✓ Compiled in 990ms
+[01:07:45.911] Server  LOG      ✓ Compiled in 369ms
+[01:09:58.548] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:09:59.581] Browser WARN    Image with src "/assets/images/sri_dhakshina_logo.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:09:59.582] Browser WARN    Image with src "/assets/images/gallery/firework_1.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:09:59.582] Browser WARN    Image with src "/assets/images/gallery/firework_2.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:09:59.582] Browser WARN    Image with src "/assets/images/gallery/firework_3.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:09:59.582] Browser WARN    Image with src "/assets/images/gallery/firework_4.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:09:59.582] Browser WARN    Image with src "/assets/images/brands/sonny.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:09:59.582] Browser WARN    Image with src "/assets/images/brands/starvell.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:09:59.582] Browser WARN    Image with src "/assets/images/brands/chettapandian.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:09:59.582] Browser WARN    Image with src "/assets/images/brands/sss.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:09:59.582] Browser WARN    Image with src "/assets/images/products/garlands.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:09:59.582] Browser WARN    Image with src "/assets/images/products/sky_shots.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:09:59.582] Browser WARN    Image with src "/assets/images/products/rockets.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:09:59.582] Browser WARN    Image with src "/assets/images/products/ground_chakkars.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:09:59.582] Browser WARN    Image with src "/assets/images/products/flower_pots.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:09:59.582] Browser WARN    Image with src "/assets/images/products/sparklers.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:10:04.114] Server  LOG      ✓ Compiled in 316ms
+[01:11:03.914] Server  LOG      ✓ Compiled in 324ms
+[01:12:48.158] Server  LOG      ✓ Compiled in 821ms
+[01:13:17.802] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:13:18.644] Browser WARN    Image with src "/assets/images/sri_dhakshina_logo.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:13:18.644] Browser WARN    Image with src "/assets/images/gallery/firework_1.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:13:18.644] Browser WARN    Image with src "/assets/images/gallery/firework_2.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:13:18.644] Browser WARN    Image with src "/assets/images/gallery/firework_3.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:13:18.645] Browser WARN    Image with src "/assets/images/gallery/firework_4.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:13:18.645] Browser WARN    Image with src "/assets/images/brands/sonny.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:13:18.645] Browser WARN    Image with src "/assets/images/brands/starvell.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:13:18.645] Browser WARN    Image with src "/assets/images/brands/chettapandian.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:13:18.645] Browser WARN    Image with src "/assets/images/brands/sss.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:13:18.645] Browser WARN    Image with src "/assets/images/products/garlands.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:13:18.645] Browser WARN    Image with src "/assets/images/products/sky_shots.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:13:18.645] Browser WARN    Image with src "/assets/images/products/rockets.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:13:18.645] Browser WARN    Image with src "/assets/images/products/ground_chakkars.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:13:18.645] Browser WARN    Image with src "/assets/images/products/flower_pots.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:13:18.645] Browser WARN    Image with src "/assets/images/products/sparklers.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:16:00.397] Server  LOG      ✓ Compiled in 669ms
+[01:16:17.681] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:16:18.440] Browser WARN    Image with src "/assets/images/sri_dhakshina_logo.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:16:18.440] Browser WARN    Image with src "/assets/images/gallery/firework_1.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:16:18.440] Browser WARN    Image with src "/assets/images/gallery/firework_2.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:16:18.440] Browser WARN    Image with src "/assets/images/gallery/firework_3.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:16:18.440] Browser WARN    Image with src "/assets/images/gallery/firework_4.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:16:18.440] Browser WARN    Image with src "/assets/images/brands/sonny.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:16:18.440] Browser WARN    Image with src "/assets/images/brands/starvell.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:16:18.440] Browser WARN    Image with src "/assets/images/brands/chettapandian.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:16:18.440] Browser WARN    Image with src "/assets/images/brands/sss.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:16:18.440] Browser WARN    Image with src "/assets/images/products/garlands.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:16:18.440] Browser WARN    Image with src "/assets/images/products/sky_shots.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:16:18.440] Browser WARN    Image with src "/assets/images/products/rockets.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:16:18.440] Browser WARN    Image with src "/assets/images/products/ground_chakkars.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:16:18.440] Browser WARN    Image with src "/assets/images/products/flower_pots.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:16:18.440] Browser WARN    Image with src "/assets/images/products/sparklers.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:19:49.690] Server  LOG      ✓ Compiled in 241ms
+[01:19:51.110] Server  ERROR    ⨯ "The requested resource isn't a valid image for" "/assets/images/brands/vadivel.png" "received" null
+[01:19:51.113] Server  ERROR    ⨯ "The requested resource isn't a valid image for" "/assets/images/brands/sony.png" "received" null
+[01:19:51.115] Server  ERROR    ⨯ "The requested resource isn't a valid image for" "/assets/images/brands/leo.png" "received" null
+[01:19:51.130] Server  ERROR    ⨯ "The requested resource isn't a valid image for" "/assets/images/brands/vanitha.png" "received" null
+[01:20:13.685] Server  ERROR    ⨯ "The requested resource isn't a valid image for" "/assets/images/brands/vanitha.png" "received" null
+[01:20:13.838] Server  ERROR    ⨯ "The requested resource isn't a valid image for" "/assets/images/brands/vadivel.png" "received" null
+[01:20:13.856] Server  ERROR    ⨯ "The requested resource isn't a valid image for" "/assets/images/brands/sony.png" "received" null
+[01:20:14.128] Server  ERROR    ⨯ "The requested resource isn't a valid image for" "/assets/images/brands/leo.png" "received" null
+[01:20:14.795] Server  ERROR    ⨯ "The requested resource isn't a valid image for" "/assets/images/brands/vanitha.png" "received" null
+[01:20:14.883] Server  ERROR    ⨯ "The requested resource isn't a valid image for" "/assets/images/brands/vadivel.png" "received" null
+[01:20:23.716] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:20:24.525] Browser WARN    Image with src "/assets/images/sri_dhakshina_logo.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:20:24.526] Browser WARN    Image with src "/assets/images/gallery/firework_1.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:20:24.526] Browser WARN    Image with src "/assets/images/gallery/firework_2.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:20:24.526] Browser WARN    Image with src "/assets/images/gallery/firework_3.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:20:24.526] Browser WARN    Image with src "/assets/images/gallery/firework_4.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:20:24.526] Browser WARN    Image with src "/assets/images/products/garlands.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:20:24.526] Browser WARN    Image with src "/assets/images/products/sky_shots.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:20:24.526] Browser WARN    Image with src "/assets/images/products/rockets.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:20:24.526] Browser WARN    Image with src "/assets/images/products/ground_chakkars.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:20:24.526] Browser WARN    Image with src "/assets/images/products/flower_pots.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:20:24.526] Browser WARN    Image with src "/assets/images/products/sparklers.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:20:28.275] Server  ERROR    ⨯ "The requested resource isn't a valid image for" "/assets/images/brands/sony.png" "received" null
+[01:20:28.280] Server  ERROR    ⨯ "The requested resource isn't a valid image for" "/assets/images/brands/leo.png" "received" null
+[01:20:28.282] Server  ERROR    ⨯ "The requested resource isn't a valid image for" "/assets/images/brands/vanitha.png" "received" null
+[01:20:28.284] Server  ERROR    ⨯ "The requested resource isn't a valid image for" "/assets/images/brands/vadivel.png" "received" null
+[01:23:10.611] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:23:11.657] Browser WARN    Image with src "/assets/images/sri_dhakshina_logo.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:23:11.657] Browser WARN    Image with src "/assets/images/gallery/firework_1.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:23:11.657] Browser WARN    Image with src "/assets/images/gallery/firework_2.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:23:11.657] Browser WARN    Image with src "/assets/images/gallery/firework_3.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:23:11.657] Browser WARN    Image with src "/assets/images/gallery/firework_4.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:23:11.657] Browser WARN    Image with src "/assets/images/brands/sony.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:23:11.657] Browser WARN    Image with src "/assets/images/brands/leo.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:23:11.657] Browser WARN    Image with src "/assets/images/brands/vanitha.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:23:11.657] Browser WARN    Image with src "/assets/images/brands/vadivel.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:23:11.657] Browser WARN    Image with src "/assets/images/products/garlands.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:23:11.657] Browser WARN    Image with src "/assets/images/products/sky_shots.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:23:11.657] Browser WARN    Image with src "/assets/images/products/rockets.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:23:11.657] Browser WARN    Image with src "/assets/images/products/ground_chakkars.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:23:11.657] Browser WARN    Image with src "/assets/images/products/flower_pots.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:23:11.657] Browser WARN    Image with src "/assets/images/products/sparklers.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:24:41.669] Server  LOG      ✓ Compiled in 312ms
+[01:27:38.462] Server  LOG      ✓ Compiled in 297ms
+[01:28:43.618] Server  LOG      ✓ Compiled in 851ms
+[01:30:41.852] Server  LOG      ✓ Compiled in 943ms
+[01:32:01.756] Server  LOG      ✓ Compiled in 979ms
+[01:32:53.635] Server  LOG      ✓ Compiled in 948ms
+[01:34:53.474] Server  LOG      ✓ Compiled in 1185ms
+[01:35:13.636] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:35:14.298] Browser WARN    Image with src "/assets/images/sri_dhakshina_logo.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:35:14.298] Browser WARN    Image with src "/assets/images/gallery/firework_1.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:35:14.298] Browser WARN    Image with src "/assets/images/gallery/firework_2.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:35:14.298] Browser WARN    Image with src "/assets/images/gallery/firework_3.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:35:14.298] Browser WARN    Image with src "/assets/images/gallery/firework_4.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:35:14.298] Browser WARN    Image with src "/assets/images/brands/sony.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:35:14.298] Browser WARN    Image with src "/assets/images/brands/leo.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:35:14.298] Browser WARN    Image with src "/assets/images/brands/vanitha.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:35:14.298] Browser WARN    Image with src "/assets/images/brands/vadivel.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:35:14.298] Browser WARN    Image with src "/assets/images/products/garlands.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:35:14.298] Browser WARN    Image with src "/assets/images/products/sky_shots.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:35:14.298] Browser WARN    Image with src "/assets/images/products/rockets.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:35:14.298] Browser WARN    Image with src "/assets/images/products/ground_chakkars.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:35:14.298] Browser WARN    Image with src "/assets/images/products/flower_pots.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:35:14.298] Browser WARN    Image with src "/assets/images/products/sparklers.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:36:31.585] Server  LOG      ✓ Compiled in 917ms
+[01:36:58.246] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:36:58.861] Browser WARN    Image with src "/assets/images/sri_dhakshina_logo.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:36:58.861] Browser WARN    Image with src "/assets/images/gallery/firework_1.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:36:58.861] Browser WARN    Image with src "/assets/images/gallery/firework_2.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:36:58.861] Browser WARN    Image with src "/assets/images/gallery/firework_3.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:36:58.861] Browser WARN    Image with src "/assets/images/gallery/firework_4.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:36:58.861] Browser WARN    Image with src "/assets/images/brands/sony.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:36:58.861] Browser WARN    Image with src "/assets/images/brands/leo.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:36:58.861] Browser WARN    Image with src "/assets/images/brands/vanitha.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:36:58.861] Browser WARN    Image with src "/assets/images/brands/vadivel.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:36:58.861] Browser WARN    Image with src "/assets/images/products/garlands.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:36:58.861] Browser WARN    Image with src "/assets/images/products/sky_shots.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:36:58.861] Browser WARN    Image with src "/assets/images/products/rockets.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:36:58.861] Browser WARN    Image with src "/assets/images/products/ground_chakkars.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:36:58.861] Browser WARN    Image with src "/assets/images/products/flower_pots.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:36:58.861] Browser WARN    Image with src "/assets/images/products/sparklers.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:37:19.024] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:37:19.338] Browser WARN    Image with src "/assets/images/sri_dhakshina_logo.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:39:47.573] Server  LOG      ✓ Compiled in 973ms
+[01:48:41.218] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:48:41.751] Browser WARN    Image with src "/assets/images/sri_dhakshina_logo.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[01:50:26.032] Server  LOG      ✓ Compiled in 1281ms
+[03:54:53.150] Server  LOG      ✓ Compiled in 250ms
+[04:00:54.921] Server  LOG      ✓ Compiled in 246ms
+[04:01:25.680] Browser LOG     Order Placed Successfully!
+[04:01:25.680] Browser LOG     %c✅ SUCCESS: Email was sent to the Admin successfully! color: #10b981; font-weight: bold; font-size: 14px;
+[04:05:35.409] Browser LOG     Order Placed Successfully!
+[04:05:35.410] Browser LOG     %c✅ SUCCESS: Email was sent to the Admin successfully! color: #10b981; font-weight: bold; font-size: 14px;
+[04:09:46.532] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
