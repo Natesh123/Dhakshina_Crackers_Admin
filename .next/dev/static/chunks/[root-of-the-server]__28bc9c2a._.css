@@ -1085,10 +1085,6 @@
     margin-top: calc(var(--spacing) * 4);
   }
 
-  .mt-5 {
-    margin-top: calc(var(--spacing) * 5);
-  }
-
   .mt-6 {
     margin-top: calc(var(--spacing) * 6);
   }
@@ -1181,10 +1177,6 @@
     margin-left: calc(var(--spacing) * 1);
   }
 
-  .ml-2 {
-    margin-left: calc(var(--spacing) * 2);
-  }
-
   .ml-3 {
     margin-left: calc(var(--spacing) * 3);
   }
@@ -1265,10 +1257,6 @@
 
   .h-3 {
     height: calc(var(--spacing) * 3);
-  }
-
-  .h-3\.5 {
-    height: calc(var(--spacing) * 3.5);
   }
 
   .h-4 {
@@ -1471,10 +1459,6 @@
     width: calc(var(--spacing) * 1.5);
   }
 
-  .w-1\/2 {
-    width: 50%;
-  }
-
   .w-1\/3 {
     width: 33.3333%;
   }
@@ -1497,10 +1481,6 @@
 
   .w-2\/5 {
     width: 40%;
-  }
-
-  .w-3\.5 {
-    width: calc(var(--spacing) * 3.5);
   }
 
   .w-3\/4 {
@@ -1770,16 +1750,6 @@
     translate: var(--tw-translate-x) var(--tw-translate-y);
   }
 
-  .translate-x-\[3px\] {
-    --tw-translate-x: 3px;
-    translate: var(--tw-translate-x) var(--tw-translate-y);
-  }
-
-  .translate-x-\[22px\] {
-    --tw-translate-x: 22px;
-    translate: var(--tw-translate-x) var(--tw-translate-y);
-  }
-
   .-translate-y-1\/2 {
     --tw-translate-y: calc(calc(1 / 2 * 100%) * -1);
     translate: var(--tw-translate-x) var(--tw-translate-y);
@@ -2031,12 +2001,6 @@
     --tw-space-y-reverse: 0;
     margin-block-start: calc(calc(var(--spacing) * 2) * var(--tw-space-y-reverse));
     margin-block-end: calc(calc(var(--spacing) * 2) * calc(1 - var(--tw-space-y-reverse)));
-  }
-
-  :where(.space-y-3 > :not(:last-child)) {
-    --tw-space-y-reverse: 0;
-    margin-block-start: calc(calc(var(--spacing) * 3) * var(--tw-space-y-reverse));
-    margin-block-end: calc(calc(var(--spacing) * 3) * calc(1 - var(--tw-space-y-reverse)));
   }
 
   :where(.space-y-4 > :not(:last-child)) {
@@ -2513,16 +2477,6 @@
   @supports (color: color-mix(in lab, red, red)) {
     .border-indigo-400\/20 {
       border-color: color-mix(in oklab, var(--color-indigo-400) 20%, transparent);
-    }
-  }
-
-  .border-indigo-400\/30 {
-    border-color: #7d87ff4d;
-  }
-
-  @supports (color: color-mix(in lab, red, red)) {
-    .border-indigo-400\/30 {
-      border-color: color-mix(in oklab, var(--color-indigo-400) 30%, transparent);
     }
   }
 
@@ -3170,10 +3124,6 @@
     }
   }
 
-  .bg-indigo-600 {
-    background-color: var(--color-indigo-600);
-  }
-
   .bg-indigo-950\/20 {
     background-color: #1e1a4d33;
   }
@@ -3264,10 +3214,6 @@
     background-color: var(--color-slate-200);
   }
 
-  .bg-slate-300 {
-    background-color: var(--color-slate-300);
-  }
-
   .bg-slate-400 {
     background-color: var(--color-slate-400);
   }
@@ -3298,26 +3244,6 @@
 
   .bg-slate-800 {
     background-color: var(--color-slate-800);
-  }
-
-  .bg-slate-800\/20 {
-    background-color: #1d293d33;
-  }
-
-  @supports (color: color-mix(in lab, red, red)) {
-    .bg-slate-800\/20 {
-      background-color: color-mix(in oklab, var(--color-slate-800) 20%, transparent);
-    }
-  }
-
-  .bg-slate-800\/30 {
-    background-color: #1d293d4d;
-  }
-
-  @supports (color: color-mix(in lab, red, red)) {
-    .bg-slate-800\/30 {
-      background-color: color-mix(in oklab, var(--color-slate-800) 30%, transparent);
-    }
   }
 
   .bg-slate-800\/40 {
@@ -4251,10 +4177,6 @@
     padding: calc(var(--spacing) * 3);
   }
 
-  .p-3\.5 {
-    padding: calc(var(--spacing) * 3.5);
-  }
-
   .p-4 {
     padding: calc(var(--spacing) * 4);
   }
@@ -4425,10 +4347,6 @@
 
   .pt-\[120px\] {
     padding-top: 120px;
-  }
-
-  .pr-1 {
-    padding-right: calc(var(--spacing) * 1);
   }
 
   .pr-2 {
@@ -4615,10 +4533,6 @@
 
   .text-\[12px\] {
     font-size: 12px;
-  }
-
-  .text-\[15px\] {
-    font-size: 15px;
   }
 
   .text-\[17px\] {
@@ -6833,18 +6747,6 @@
   }
 
   @media (hover: hover) {
-    .hover\:bg-indigo-100:hover {
-      background-color: var(--color-indigo-100);
-    }
-  }
-
-  @media (hover: hover) {
-    .hover\:bg-indigo-500:hover {
-      background-color: var(--color-indigo-500);
-    }
-  }
-
-  @media (hover: hover) {
     .hover\:bg-indigo-600:hover {
       background-color: var(--color-indigo-600);
     }
@@ -7204,12 +7106,6 @@
   }
 
   @media (hover: hover) {
-    .hover\:text-slate-200:hover {
-      color: var(--color-slate-200);
-    }
-  }
-
-  @media (hover: hover) {
     .hover\:text-slate-900:hover {
       color: var(--color-slate-900);
     }
@@ -7555,10 +7451,6 @@
     .focus\:ring-festive-purple\/20:focus {
       --tw-ring-color: color-mix(in oklab, var(--festive-purple) 20%, transparent);
     }
-  }
-
-  .focus\:ring-indigo-500:focus {
-    --tw-ring-color: var(--color-indigo-500);
   }
 
   .focus\:ring-indigo-500\/20:focus {
