@@ -44,3 +44,13 @@ Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
 [00:17:18.979] Browser WARN    Image with src "/assets/images/gallery/firework_2.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
 [00:17:18.979] Browser WARN    Image with src "/assets/images/gallery/firework_3.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
 [00:17:18.979] Browser WARN    Image with src "/assets/images/gallery/firework_4.png" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:50:07.131] Server  LOG        Reload env: .env.local
+[00:50:07.822] Server  LOG      ✓ Compiled in 550ms
+[00:50:09.558] Server  LOG        Reload env: .env.local
+[00:50:09.774] Server  LOG      ✓ Compiled in 95ms
+[00:50:18.978] Server  LOG        Reload env: .env.local
+[00:50:19.479] Server  LOG      ✓ Compiled in 335ms
+[00:50:20.665] Server  LOG        Reload env: .env.local
+[00:50:21.191] Server  LOG      ✓ Compiled in 321ms
+[00:50:22.717] Server  LOG        Reload env: .env.local
+[00:50:23.153] Server  LOG      ✓ Compiled in 278ms

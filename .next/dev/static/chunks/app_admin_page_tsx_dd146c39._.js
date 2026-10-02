@@ -81,7 +81,7 @@ function AdminDashboard() {
             headers
         });
     };
-    const apiUrl = ("TURBOPACK compile-time value", "http://localhost:6001") || "http://localhost:6001";
+    const apiUrl = ("TURBOPACK compile-time value", "https://api.sridhakshinacrackers.in") || "http://localhost:6001";
     const getImageUrl = (url)=>{
         if (!url) return "/assets/images/placeholder.png";
         if (url.includes('localhost:5001')) {
