@@ -18,6 +18,8 @@ interface CartContextType {
   removeFromCart: (productId: number) => void;
   clearCart: () => void;
   cartCount: number;
+  cartSubtotal: number;
+  cartPackingCharges: number;
   cartTotal: number;
   cartOriginalTotal: number;
   cartDiscountableOriginalTotal: number;
@@ -99,10 +101,12 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   };
 
   const cartCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
-  const cartTotal = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  const cartSubtotal = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  const cartPackingCharges = Math.round(cartSubtotal * 0.03);
+  const cartTotal = cartSubtotal + cartPackingCharges;
   const cartOriginalTotal = cartItems.reduce((acc, item) => acc + item.originalPrice * item.quantity, 0);
   const cartDiscountableOriginalTotal = cartItems.reduce((acc, item) => acc + (item.originalPrice > item.price ? item.originalPrice * item.quantity : 0), 0);
-  const cartSavings = cartOriginalTotal - cartTotal;
+  const cartSavings = cartOriginalTotal - cartSubtotal;
 
   return (
     <CartContext.Provider
@@ -113,6 +117,8 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         removeFromCart,
         clearCart,
         cartCount,
+        cartSubtotal,
+        cartPackingCharges,
         cartTotal,
         cartOriginalTotal,
         cartDiscountableOriginalTotal,

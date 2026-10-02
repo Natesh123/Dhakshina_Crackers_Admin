@@ -9,36 +9,118 @@ import ProductCatalog from "./components/ProductCatalog";
 import SafetyTips from "./components/SafetyTips";
 import ContactSection from "./components/ContactSection";
 import ContactFloatingButtons from "./components/ContactFloatingButtons";
-import OurBrands from "./components/OurBrands";
 
 export default function Home() {
   const [priceListUrl, setPriceListUrl] = useState("");
+  const [bannerText, setBannerText] = useState("");
+  const [minOrderValue, setMinOrderValue] = useState("");
 
   useEffect(() => {
     const fetchPriceList = async () => {
       try {
-        const apiUrl = process.env.NEXT_PUBLIC_API_URL || "";
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5001";
         const res = await fetch(`${apiUrl}/api/settings/price-list`);
         if (res.ok) {
           const data = await res.json();
-          setPriceListUrl(data.url || "");
+          let fetchedUrl = data.url || "";
+          
+          if (fetchedUrl.includes('localhost:5000') || fetchedUrl.includes('localhost:5001')) {
+            try {
+              const path = new URL(fetchedUrl).pathname;
+              fetchedUrl = `${apiUrl}${path}`;
+            } catch (e) {
+              // ignore
+            }
+          }
+          // Handle Mixed Content (http -> https)
+          if (typeof window !== 'undefined' && window.location.protocol === 'https:' && fetchedUrl.startsWith('http://')) {
+              fetchedUrl = fetchedUrl.replace('http://', 'https://');
+          }
+          
+          setPriceListUrl(fetchedUrl);
         }
       } catch (e) {
         console.error("Error fetching price list:", e);
       }
     };
+    const fetchBannerText = async () => {
+      try {
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5001";
+        const res = await fetch(`${apiUrl}/api/settings/banner-text/get`);
+        if (res.ok) {
+          const data = await res.json();
+          setBannerText(data.text || "");
+        }
+      } catch (e) {
+        console.error("Error fetching banner text:", e);
+      }
+    };
+    const fetchMinOrderValue = async () => {
+      try {
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5001";
+        const res = await fetch(`${apiUrl}/api/settings/min-order-value/get`);
+        if (res.ok) {
+          const data = await res.json();
+          setMinOrderValue(data.value || "");
+        }
+      } catch (e) {
+        console.error("Error fetching min order value:", e);
+      }
+    };
+
     fetchPriceList();
+    fetchBannerText();
+    fetchMinOrderValue();
   }, []);
 
   return (
     <div className="min-h-screen bg-white text-gray-900 flex flex-col font-['Outfit'] selection:bg-festive-gold selection:text-festive-purple">
+      {bannerText && (
+        <div className="bg-festive-purple text-white py-2 overflow-hidden whitespace-nowrap relative border-b border-festive-gold/30">
+          <style>{`
+            @keyframes marquee-lr {
+              0% { transform: translateX(-100%); }
+              100% { transform: translateX(100vw); }
+            }
+            .animate-marquee-lr {
+              display: inline-block;
+              animation: marquee-lr 15s linear infinite;
+            }
+          `}</style>
+          <div className="animate-marquee-lr font-bold tracking-wider text-sm md:text-base px-4">
+            {bannerText}
+          </div>
+        </div>
+      )}
+
 
       {/* NAVIGATION */}
       <Navbar priceListUrl={priceListUrl} />
 
-      <main className="flex-grow">
+      <main className="flex-grow pt-[110px] sm:pt-[120px] md:pt-[130px] xl:pt-[140px]">
         {/* HERO SECTION */}
         <Banner priceListUrl={priceListUrl} />
+        
+        {/* MINIMUM ORDER VALUE BANNER */}
+        {minOrderValue && Number(minOrderValue) > 0 && (
+          <div className="bg-gradient-to-r from-festive-purple via-[#3d1166] to-festive-purple py-4 md:py-5 border-y-2 border-festive-gold relative overflow-hidden shadow-xl z-20">
+            <div className="absolute inset-0 bg-[url('/assets/images/stars-pattern.png')] opacity-10 mix-blend-overlay"></div>
+            <div className="absolute -top-10 -right-10 w-32 h-32 bg-festive-gold rounded-full filter blur-3xl opacity-20 animate-pulse"></div>
+            <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-festive-gold rounded-full filter blur-3xl opacity-20 animate-pulse"></div>
+            
+            <div className="container mx-auto px-1 flex flex-row items-center justify-center gap-1 sm:gap-4 relative z-10 text-center flex-wrap">
+              <span className="text-lg sm:text-3xl animate-bounce shadow-festive-gold drop-shadow-lg">🎉</span>
+              <h3 className="text-white font-semibold text-[12px] sm:text-xl md:text-2xl tracking-wide uppercase drop-shadow-md">
+                <span className="hidden sm:inline">Minimum Order Value:</span>
+                <span className="sm:hidden">Minimum Order:</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-festive-gold to-yellow-500 font-extrabold ml-1 text-[14px] sm:text-xl md:text-2xl">
+                  ₹{Number(minOrderValue).toLocaleString('en-IN')}
+                </span>
+              </h3>
+              <span className="text-lg sm:text-3xl animate-bounce shadow-festive-gold drop-shadow-lg" style={{animationDelay: '0.2s'}}>🎉</span>
+            </div>
+          </div>
+        )}
         
         {/* PRODUCT CATALOG */}
         <ProductCatalog priceListUrl={priceListUrl} />
@@ -77,64 +159,13 @@ export default function Home() {
                           <div className="absolute inset-0 rounded-full bg-white opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
                           {item.icon}
                       </div>
-                      <span className="text-white font-black uppercase text-xs md:text-sm tracking-[0.2em] group-hover:text-festive-gold transition-colors duration-300 leading-snug">{item.label}</span>
+                      <span className="text-white font-semibold uppercase text-xs md:text-sm tracking-[0.2em] group-hover:text-festive-gold transition-colors duration-300 leading-snug">{item.label}</span>
                   </div>
                 ))}
             </div>
         </section>
 
-        {/* BRAND INTRODUCTION SECTION (ABOUT US) */}
-        <section id="about-us" className="bg-gray-50 py-24 overflow-hidden scroll-mt-24">
-            <div className="container mx-auto px-4 flex flex-col md:flex-row items-center gap-16">
-                <div className="md:w-1/2 flex justify-center">
-                    <div className="relative w-72 h-72 md:w-[28rem] md:h-[28rem] rounded-[2.5rem] overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.12)] bg-white p-10 border border-gray-100 group">
-                        <img 
-                            src="/assets/images/sri_dhakshina_logo.jpg" 
-                            alt="Sri Dhakshina Crackers Logo" 
-                            className="w-full h-full object-contain transition-transform duration-1000 group-hover:scale-110"
-                        />
-                        <div className="absolute inset-0 border-2 border-festive-gold/10 rounded-[2.5rem] pointer-events-none"></div>
-                        {/* Festive Badge */}
-                        <div className="absolute top-6 right-6 bg-festive-red text-white text-xs font-black px-4 py-2 rounded-full shadow-lg animate-bounce">
-                            SINCE 2024
-                        </div>
-                    </div>
-                </div>
-                <div className="md:w-1/2 text-center md:text-left">
-                    <div className="inline-block px-4 py-1.5 rounded-full bg-festive-red/10 text-festive-red font-black uppercase tracking-[0.2em] text-sm mb-6">
-                        About Sri Dhakshina Crackers
-                    </div>
-                    <h2 className="text-4xl md:text-6xl font-black text-festive-purple mb-8 leading-[1.1] uppercase tracking-tighter">
-                        Bringing The <span className="text-festive-red">Spark</span> <br />
-                        To Your Celebrations
-                    </h2>
-                    <p className="text-gray-600 text-lg md:text-xl mb-8 leading-relaxed font-medium">
-                        Welcome to **Sri Dhakshina Crackers**, your premier destination for high-quality fireworks direct from the manufacturing capital of India—**Sivakasi**. We are deeply committed to delivering joy, excitement, and the highest standards of safety in every box.
-                    </p>
-                    <p className="text-gray-500 text-base md:text-lg mb-10 leading-relaxed">
-                        Our curated collections range from traditional sparklers to grand sky shows, all tested for maximum safety and spectacular performance. We pride ourselves on offering wholesale prices directly to our customers, ensuring your festivals are both grand and affordable.
-                    </p>
-                    <div className="grid grid-cols-2 gap-6 mb-12">
-                        {[
-                            { title: "Direct From Sivakasi", sub: "Authentic Quality" },
-                            { title: "Safety Certified", sub: "Child Safe Options" },
-                            { title: "Wholesale Price", sub: "Best In Market" },
-                            { title: "Pan India Delivery", sub: "Fast & Reliable" }
-                        ].map((stat) => (
-                            <div key={stat.title} className="border-l-4 border-festive-gold pl-4 text-left">
-                                <h4 className="text-festive-purple font-black text-base uppercase tracking-tight">{stat.title}</h4>
-                                <p className="text-gray-400 text-sm font-bold uppercase">{stat.sub}</p>
-                            </div>
-                        ))}
-                    </div>
 
-                </div>
-            </div>
-        </section>
-
-
-        {/* OUR BRANDS SECTION */}
-        <OurBrands />
 
         {/* SAFETY TIPS SECTION */}
         <SafetyTips />
