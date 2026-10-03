@@ -1,0 +1,11 @@
+#!/usr/bin/expect -f
+set timeout -1
+spawn ssh -o StrictHostKeyChecking=no root@103.191.208.98 "cd /var/www/sridhakshinacrackers/frontend && tar -xzf deploy2.tar.gz && npm run build && pm2 restart SDC-frontend && pm2 logs SDC-frontend --lines 10"
+expect {
+    "password:" {
+        send "Prasath@1990\r"
+        expect eof
+    }
+    eof {
+    }
+}

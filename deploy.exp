@@ -1,0 +1,11 @@
+#!/usr/bin/expect -f
+set timeout -1
+spawn scp -o StrictHostKeyChecking=no deploy.tar.gz root@103.191.208.98:/var/www/sridhakshinacrackers/frontend/
+expect {
+    "password:" {
+        send "Prasath@1990\r"
+        expect eof
+    }
+    eof {
+    }
+}

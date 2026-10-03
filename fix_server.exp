@@ -1,0 +1,11 @@
+#!/usr/bin/expect -f
+set timeout -1
+spawn ssh -o StrictHostKeyChecking=no root@103.191.208.98 "cd /var/www/sridhakshinacrackers/frontend && sed -i 's/3005/3008/g' package.json && pm2 delete SDC-frontend frontend ; pm2 start npm --name 'SDC-frontend' -- start && pm2 save && sed -i 's/3005/3008/g' /etc/apache2/sites-enabled/sridhakshinacrackers.in-le-ssl.conf && systemctl restart apache2"
+expect {
+    "password:" {
+        send "Prasath@1990\r"
+        expect eof
+    }
+    eof {
+    }
+}

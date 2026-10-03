@@ -59,7 +59,17 @@ function ProductsPageInner() {
 
         if (plRes && plRes.ok) {
           const plData = await plRes.json();
-          setPriceListUrl(plData.url || "");
+          let fetchedUrl = plData.url || "";
+          if (fetchedUrl.includes('localhost:5000') || fetchedUrl.includes('localhost:5001')) {
+            try {
+              const path = new URL(fetchedUrl).pathname;
+              fetchedUrl = `${apiUrl}${path}`;
+            } catch (e) {}
+          }
+          if (typeof window !== 'undefined' && window.location.protocol === 'https:' && fetchedUrl.startsWith('http://')) {
+              fetchedUrl = fetchedUrl.replace('http://', 'https://');
+          }
+          setPriceListUrl(fetchedUrl);
         }
       } catch (e) {
         console.error("Error loading products catalogue:", e);
@@ -104,6 +114,15 @@ function ProductsPageInner() {
     if (el) {
       el.scrollIntoView({ behavior: "smooth", block: "start" });
     }
+  };
+
+  const getImageUrl = (url: string) => {
+    if (!url) return "/assets/images/placeholder.png";
+    if (url.includes('localhost:5001') && apiUrl !== "http://localhost:5001") {
+      return url.replace(/http:\/\/localhost:5001/g, apiUrl);
+    }
+    if (url.startsWith('http')) return url;
+    return `${apiUrl}${url.startsWith('/') ? '' : '/'}${url}`;
   };
 
   // Filter products by search query, active filter, and sort by sort_order
@@ -331,7 +350,7 @@ function ProductsPageInner() {
                             className="w-full h-[90px] sm:h-[130px] md:h-[180px] bg-white flex items-center justify-center p-1.5 sm:p-3 md:p-4 cursor-pointer relative shrink-0"
                             onClick={() => setSelectedImage(prod)}
                           >
-                            <img src={prod.image || "/assets/images/placeholder.png"} alt={prod.name} loading="lazy" decoding="async" className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500" />
+                            <img src={getImageUrl(prod.image)} alt={prod.name} loading="lazy" decoding="async" className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500" />
                             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300 rounded-t-lg md:rounded-t-2xl"></div>
                           </div>
 
@@ -408,7 +427,7 @@ function ProductsPageInner() {
                   </div>
                   <div className="relative w-full h-full p-8">
                       <img
-                          src={selectedImage.image || "/assets/images/placeholder.png"}
+                          src={getImageUrl(selectedImage.image)}
                           alt={selectedImage.name}
                           className="w-full h-full object-contain"
                       />

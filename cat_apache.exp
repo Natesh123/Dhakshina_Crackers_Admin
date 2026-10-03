@@ -1,0 +1,11 @@
+#!/usr/bin/expect -f
+set timeout -1
+spawn ssh -o StrictHostKeyChecking=no root@103.191.208.98 "cat /etc/apache2/sites-enabled/sridhakshinacrackers.in-le-ssl.conf"
+expect {
+    "password:" {
+        send "Prasath@1990\r"
+        expect eof
+    }
+    eof {
+    }
+}

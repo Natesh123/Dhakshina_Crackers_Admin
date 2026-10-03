@@ -1,0 +1,11 @@
+#!/usr/bin/expect -f
+set timeout -1
+spawn ssh -o StrictHostKeyChecking=no root@103.191.208.98 "cd /var/www/sridhakshinacrackers/frontend && sed -i 's/3005/3008/g' package.json && pm2 restart SDC-frontend && pm2 save"
+expect {
+    "password:" {
+        send "Prasath@1990\r"
+        expect eof
+    }
+    eof {
+    }
+}
